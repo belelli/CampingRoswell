@@ -13,16 +13,9 @@ public class PlayerMovement : MonoBehaviour
     //variables para salto//
     //float _jumpForce;
     //bool _wantsToJump;
-
-
-
-   
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float _rotateSpd = 1;
+ 
+    
 
     private void Awake()
     {
@@ -45,5 +38,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //_rigidbody.MovePosition(transform.position + (_speed * _direction * Time.fixedDeltaTime));
         _rigidbody.velocity = _direction * _speed;
+
+        RotatePlayer();
+    }
+
+    void RotatePlayer() 
+    {
+        var rotation = Input.GetAxis("Mouse X") * _rotateSpd * Time.deltaTime * 500;
+        transform.Rotate(0f, rotation, 0f);
     }
 }
