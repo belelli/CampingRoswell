@@ -1868,13 +1868,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 435736569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48c41da4051d6b489ddabd55589b06e, type: 3}
+  m_Script: {fileID: 11500000, guid: bdd727e3f6265d04caf9c3fc320eccef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
+  maxHP: 100
+  dmg: 5
+  speed: 2
+  range: 1
   player: {fileID: 1755377481}
-  speed: 5
-  attackRange: 0.2
-  damage: 10
 --- !u!1 &475557867
 GameObject:
   m_ObjectHideFlags: 0
