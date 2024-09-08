@@ -1,3 +1,2 @@
-DOS!
-TRES!
-CUATRO!
+WASD Para controlar al personaje.
+Click izquierdo para disparar
