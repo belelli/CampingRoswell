@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stringPoints : MonoBehaviour
+public class StringPoint : MonoBehaviour
 {
-    public Transform _leftPoint;
-    public Transform _rightPoint;
-    public Transform _centerPoint;
+    public Transform LeftPoint;
+    public Transform RightPoint;
+    public Transform CenterPoint;
 
     LineRenderer slingshotString;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,6 @@ public class stringPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slingshotString.SetPositions(new Vector3[3] { _leftPoint.position, _centerPoint.position, _rightPoint.position });
+        slingshotString.SetPositions(new Vector3[3] { LeftPoint.position, CenterPoint.position, RightPoint.position });
     }
 }

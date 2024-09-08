@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class slingShot : MonoBehaviour
+public class SlingShot : MonoBehaviour
 {
     public Transform Projectile;
     public Transform DrawFrom;
     public Transform DrawTo;
 
-    public stringPoints slingshotString;
+    public StringPoint slingshotString;
     public int NrDrawIncrements = 10;
 
     private Transform currentProjectile;
 
     private bool draw;
+    private float modifierCenter = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +25,10 @@ public class slingShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) { DrawSlingShot(1); }
-
-        if (Input.GetKeyUp(KeyCode.Mouse0)) { ReleaseAndShoot(30); }
-            
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            DrawSlingShot(1);
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+            ReleaseAndShoot(50);
     }
 
     public void ReleaseAndShoot(float shotForce)
@@ -37,15 +38,16 @@ public class slingShot : MonoBehaviour
         Rigidbody projectileRigidBody = currentProjectile.GetComponent<Rigidbody>();
         projectileRigidBody.isKinematic = false;
         projectileRigidBody.AddForce(transform.forward * shotForce, ForceMode.Impulse);
-        slingshotString._centerPoint = DrawFrom;
+        slingshotString.CenterPoint = DrawFrom;
     }
 
     public void DrawSlingShot(float speed)
     {
         draw = true;
-        currentProjectile = Instantiate(Projectile, DrawFrom.position, Quaternion.identity, transform);
+        
+        currentProjectile = Instantiate(Projectile, DrawFrom.position, Quaternion.identity, transform );
         currentProjectile.forward = transform.forward;
-        slingshotString._centerPoint = currentProjectile.transform;
+        slingshotString.CenterPoint = currentProjectile.transform;
 
         float waitTimeBetweenDraws = speed / NrDrawIncrements;
         StartCoroutine(drawSlingShotWithIncrements(waitTimeBetweenDraws));
@@ -66,5 +68,4 @@ public class slingShot : MonoBehaviour
             }
         }
     }
-
 }

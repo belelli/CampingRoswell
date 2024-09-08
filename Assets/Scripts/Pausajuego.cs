@@ -29,13 +29,13 @@ public class GameController : MonoBehaviour
         {
            
             Time.timeScale = 0f;
-            playerScripts.GetComponent<slingShot>().enabled = false;
+            //playerScripts.GetComponent<slingShot>().enabled = false;
         }
         else
         {
            
             Time.timeScale = 1f;
-            playerScripts.GetComponent<slingShot>().enabled = true;
+            //playerScripts.GetComponent<slingShot>().enabled = true;
         }
     }
 }
