@@ -10,10 +10,14 @@ public class Inventario : MonoBehaviour
     private int allSlots;
     private int enabledSlots;
     private GameObject[] slot;
-    public GameObject slotHolder;
-    
+    public GameObject slotHolder;    
+    public pauseGame _stopGame;
+    public GameObject _pauseMove;
+
     void Start()
     {
+        
+
         allSlots = slotHolder.transform.childCount;
         slot = new GameObject[allSlots];
         for (int i = 0; i < allSlots; i++)
@@ -41,12 +45,14 @@ public class Inventario : MonoBehaviour
         if (InventoryEnabled) 
         {
             inventory.SetActive(true);
+            _stopGame.TogglePause();
+            _pauseMove.GetComponent<PlayerMovement>().enabled = false;
 
         }
         else 
         {
             inventory.SetActive(false);
-        
+            _pauseMove.GetComponent<PlayerMovement>().enabled = true;
         }
 
         

@@ -14,7 +14,7 @@ public class SlingShot : MonoBehaviour
     private Transform currentProjectile;
 
     private bool draw;
-    private float modifierCenter = 0.5f;
+   
 
     // Start is called before the first frame update
     void Start()

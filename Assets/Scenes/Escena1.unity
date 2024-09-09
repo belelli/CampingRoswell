@@ -5027,10 +5027,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466914667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271a8e9432a04924d9a0ccb8661c0f97, type: 3}
+  m_Script: {fileID: 11500000, guid: 50e69fbef10926e4f97e53eb3189839e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScripts: {fileID: 0}
+  playerScripts: {fileID: 1682334067}
 --- !u!1 &1467038224
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,6 +5812,11 @@ MonoBehaviour:
   recallTextObject: {fileID: 201952773}
   letterTitle: Letter1
   canvas: {fileID: 292449375}
+--- !u!1 &1682334067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6705207229222416001, guid: efd6ea043380e194ea577eda31801e1e, type: 3}
+  m_PrefabInstance: {fileID: 9163689225447082144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712829756
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,6 +6276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1855805599}
   slotHolder: {fileID: 485186979}
+  _stopGame: {fileID: 1466914670}
+  _pauseMove: {fileID: 1755377477}
 --- !u!114 &1755377485
 MonoBehaviour:
   m_ObjectHideFlags: 0
