@@ -5,28 +5,19 @@ using UnityEngine;
 public class Wasp : Enemy
 {
     public Transform player; // Referencia al transform del jugador
-   // public float Speed = 5f; // Velocidad de movimiento de la avispa
-    //public float attackRange = 1f; // Rango de ataque
-    // public int damage = 10; // Daño que hace la avispa
+    public float attackRange = 5f; // Rango de ataque
 
     private void Update()
     {
 
-        MoveTowardsPlayer();
+        DetectingPlayer();
 
 
-        if (Vector3.Distance(transform.position, player.position) <= range)
+        /* if (Vector3.Distance(transform.position, player.position) <= range)
         {
             AttackPlayer();
         }
-    }
-
-    private void MoveTowardsPlayer()
-    {
-
-        Vector3 direction = (player.position - transform.position).normalized;
-
-        transform.position += direction * speed * Time.deltaTime;
+        */
     }
 
     private void AttackPlayer()

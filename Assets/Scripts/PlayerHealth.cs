@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            
 
             
         }
@@ -24,5 +25,6 @@ public class PlayerHealth : MonoBehaviour
     {
       
         Debug.Log("Player is dead!");
+        Time.timeScale = 0;
     }
 }
