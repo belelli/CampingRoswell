@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventario : MonoBehaviour
+public class Inventary : MonoBehaviour
 {
 
     private bool InventoryEnabled;
     public GameObject inventory;
     private int allSlots;
     private int enabledSlots;
-    private GameObject[] slot;
+    public GameObject[] slots;
     public GameObject slotHolder;    
     public pauseGame _stopGame;
     public GameObject _pauseMove;
@@ -19,14 +19,14 @@ public class Inventario : MonoBehaviour
         
 
         allSlots = slotHolder.transform.childCount;
-        slot = new GameObject[allSlots];
+        slots = new GameObject[allSlots];
         for (int i = 0; i < allSlots; i++)
         {
-            slot[i] = slotHolder.transform.GetChild(i).gameObject;
+            slots[i] = slotHolder.transform.GetChild(i).gameObject;
 
-            if (slot[i].GetComponent<NewBehaviourScript>().item == null)
+            if (slots[i].GetComponent<slot>().item == null)
             {
-                slot[i].GetComponent<NewBehaviourScript>().empty = true;
+                slots[i].GetComponent<slot>().empty = true;
 
 
             }
@@ -66,32 +66,38 @@ public class Inventario : MonoBehaviour
             GameObject itempickUp = other.gameObject;
             Item item = itempickUp.GetComponent<Item>();
 
-            AddItem(itempickUp,item.ID,item.type,item.description,item.icon);
+            AddItem(itempickUp,item.ID,item.type,item.description,item.icon, item.letterName);
 
 
         }
     }
 
-    public void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
+    public void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
     {
         for (int i = 0; i < allSlots; i++)
         {
-            if (slot[i].GetComponent<NewBehaviourScript>().empty)
+            if (slots[i].GetComponent<slot>().empty)
             {
                 itemObject.GetComponent<Item>().pickedUp = true;
 
-                slot[i].GetComponent<NewBehaviourScript>().item = itemObject;
-                slot[i].GetComponent<NewBehaviourScript>().ID = itemID;
-                slot[i].GetComponent<NewBehaviourScript>().type = itemType;
-                slot[i].GetComponent<NewBehaviourScript>().description = itemDescription;
-                slot[i].GetComponent<NewBehaviourScript>().icon = itemIcon;
+                slots[i].GetComponent<slot>().item = itemObject;
+                slots[i].GetComponent<slot>().ID = itemID;
+                slots[i].GetComponent<slot>().type = itemType;
+                slots[i].GetComponent<slot>().description = itemDescription;
+                slots[i].GetComponent<slot>().icon = itemIcon;
 
-                itemObject.transform.parent = slot[i].transform;
+                if(slots[i].GetComponent<slot>().letterName == "letter")
+                {
+                    slots[i].GetComponent<slot>().letterName = letterName;
+                    print("agregue la carta " + letterName);
+                }
+
+                itemObject.transform.parent = slots[i].transform;
                 itemObject.SetActive(false);
 
-                slot[i].GetComponent<NewBehaviourScript>().UpdateSlots();
+                slots[i].GetComponent<slot>().UpdateSlots();
 
-                slot[i].GetComponent<NewBehaviourScript>().empty = false;
+                slots[i].GetComponent<slot>().empty = false;
                 
                 return;
 

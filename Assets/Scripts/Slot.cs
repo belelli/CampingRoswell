@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class slot : MonoBehaviour
 {
     public GameObject item;
     public int ID;
@@ -11,6 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     public string description;
     public bool empty;
     public Sprite icon;
+    public string letterName;
 
     public Transform slotIconGameObject;
 
@@ -31,4 +32,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
     
     }
+
+   
 }

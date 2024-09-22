@@ -8,7 +8,7 @@ public class closeButton : MonoBehaviour
     
     public void Close()
     {
-        print("que paso...");
+    
         canvas.gameObject.SetActive(false);
     }
 }
