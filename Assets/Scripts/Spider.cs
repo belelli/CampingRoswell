@@ -32,7 +32,7 @@ public class Spider : Enemy
         
         _bulletTime -= Time.deltaTime;
 
-        print("update! SHOOT");
+        //print("update! SHOOT"); comento esta línea por que ya vimos que anda y spammea jaja
         if (_bulletTime > 0) return;
         
         _bulletTime = _timer;

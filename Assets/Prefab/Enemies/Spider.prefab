@@ -1855,9 +1855,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3442955587046560026}
   - component: {fileID: 4413086423583299057}
+  - component: {fileID: 8742443639936907167}
   m_Layer: 0
   m_Name: Spider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1903,6 +1904,27 @@ MonoBehaviour:
   spawnPoint: {fileID: 8559205651829536991}
   bulletSpeed: 20
   turnSpeed: 1000
+--- !u!65 &8742443639936907167
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257790352527384149}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2540846, y: 0.92514014, z: 1.8698902}
+  m_Center: {x: -0.07353425, y: 1.1825708, z: -0.3863573}
 --- !u!1 &8312489884562245799
 GameObject:
   m_ObjectHideFlags: 0

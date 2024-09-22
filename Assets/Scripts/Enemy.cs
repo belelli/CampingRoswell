@@ -23,13 +23,10 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void takeDamage(int damage)
     {
+        hp -= damage;
         if (hp <= 0)
         {
             Destroy(gameObject);
-        }
-        else
-        {
-            hp = hp - damage;
         }
     }
 
