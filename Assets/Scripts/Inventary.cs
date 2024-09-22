@@ -86,11 +86,13 @@ public class Inventary : MonoBehaviour
                 slots[i].GetComponent<slot>().description = itemDescription;
                 slots[i].GetComponent<slot>().icon = itemIcon;
 
-                if(slots[i].GetComponent<slot>().letterName == "letter")
+                slots[i].GetComponent<slot>().letterName = letterName;
+
+                /*if (slots[i].GetComponent<slot>().letterName == "letter")
                 {
                     slots[i].GetComponent<slot>().letterName = letterName;
                     print("agregue la carta " + letterName);
-                }
+                }*/
 
                 itemObject.transform.parent = slots[i].transform;
                 itemObject.SetActive(false);
