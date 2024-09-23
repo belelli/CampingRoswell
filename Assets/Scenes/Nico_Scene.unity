@@ -906,6 +906,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7475849556106959026, guid: ddc1f52f466e194439a85825e545870a, type: 3}
   m_PrefabInstance: {fileID: 1520369532}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1520369534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1263064809606515691, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+  m_PrefabInstance: {fileID: 1520369532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829049771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2a4c9786e486a4ca6ddf634b390459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1620922062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1036,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb4117dad6d8194e8585f907ffca68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventary: {fileID: 0}
+  inventary: {fileID: 1520369534}
   canvas: {fileID: 713511302}
   recallTextObject: {fileID: 490497367}
 --- !u!1001 &2039246320

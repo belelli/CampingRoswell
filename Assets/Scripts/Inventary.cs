@@ -45,7 +45,7 @@ public class Inventary : MonoBehaviour
         if (InventoryEnabled) 
         {
             inventory.SetActive(true);
-            _stopGame.TogglePause();
+            // _stopGame.TogglePause();
             _pauseMove.GetComponent<PlayerMovement>().enabled = false;
 
         }
