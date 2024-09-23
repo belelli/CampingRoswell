@@ -1544,6 +1544,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8187657112355982898, guid: 1f11f574a92342d4386ffb8fe39882ea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.018814
+      objectReference: {fileID: 0}
     - target: {fileID: 8319613385396073832, guid: 1f11f574a92342d4386ffb8fe39882ea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1826,6 +1830,10 @@ PrefabInstance:
       propertyPath: rotateSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
+      propertyPath: deathEnemyPart
+      value: 
+      objectReference: {fileID: 2217322914163781054, guid: 31f6d126c097b3a4fa9cd9d380e9f81e, type: 3}
     - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
       propertyPath: playerPosition
       value: 

@@ -13,7 +13,8 @@ public abstract class Enemy : MonoBehaviour
     public float detectionRange = 5f;
     public Transform playerPosition;
     private NavMeshAgent agent;
-
+    public GameObject deathEnemyPart;
+    Vector3 CollCenter;
     public virtual void chase() { 
     
     }
@@ -27,6 +28,7 @@ public abstract class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+            Instantiate(deathEnemyPart, CollCenter, Quaternion.identity);
         }
     }
 
@@ -38,6 +40,8 @@ public abstract class Enemy : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        CollCenter = capsuleCollider.transform.TransformPoint(capsuleCollider.center);
     }
 
     // Update is called once per frame
