@@ -362,71 +362,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &209419162
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.176441
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.585311
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223813128141308934, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8294832414938218000, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: m_Name
-      value: Letter
-      objectReference: {fileID: 0}
-    - target: {fileID: 9026514952695994844, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 713511302}
-    - target: {fileID: 9026514952695994844, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
-      propertyPath: recallTextObject
-      value: 
-      objectReference: {fileID: 490497367}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 828594edc8f130d42ba34396e62856ec, type: 3}
 --- !u!114 &236970073 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4325088361924060278, guid: 1464fa05b60b99d4284f42beba2d6189, type: 3}
@@ -803,9 +738,9 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 2198965400076451369, guid: 5fc1c726abe03ff46abdce22c0cf5fbe, type: 3}
   m_PrefabInstance: {fileID: 2099978750}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &961427148 stripped
+--- !u!1 &826317324 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1898920914202174627, guid: 1f11f574a92342d4386ffb8fe39882ea, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5558824350589341685, guid: 1f11f574a92342d4386ffb8fe39882ea, type: 3}
   m_PrefabInstance: {fileID: 2039246320}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &989377156
@@ -912,7 +847,7 @@ PrefabInstance:
     - target: {fileID: 1263064809606515691, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: slotHolder
       value: 
-      objectReference: {fileID: 961427148}
+      objectReference: {fileID: 826317324}
     - target: {fileID: 5150347178508818796, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: Projectile
       value: 
@@ -1913,7 +1848,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 181834271}
   - {fileID: 340896755}
-  - {fileID: 209419162}
   - {fileID: 989377156}
   - {fileID: 17886857}
   - {fileID: 2099978750}
