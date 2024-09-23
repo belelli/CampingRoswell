@@ -8,6 +8,7 @@ public class SlingShot : MonoBehaviour
     public Transform DrawFrom;
     public Transform DrawTo;
 
+
     public StringPoint slingshotString;
     public int NrDrawIncrements = 10;
 
