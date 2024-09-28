@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -17,6 +18,15 @@ public class Item : MonoBehaviour
 
     [HideInInspector]
     public bool equipped;
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Update()
     {

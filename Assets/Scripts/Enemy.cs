@@ -14,7 +14,8 @@ public abstract class Enemy : MonoBehaviour
     public Transform playerPosition;
     private NavMeshAgent agent;
     public GameObject deathEnemyPart;
-    Vector3 CollCenter;
+    public GameObject itemToDrop;
+    public Vector3 CollCenter;
     public virtual void chase() { 
     
     }
@@ -26,13 +27,18 @@ public abstract class Enemy : MonoBehaviour
     {
         hp -= damage;
         if (hp <= 0)
-        {
+        {   
             Destroy(gameObject);
             Instantiate(deathEnemyPart, CollCenter, Quaternion.identity);
+            DropItem();
+
         }
     }
 
-   
+    public void DropItem()
+    {
+        GameObject itemDropped = Instantiate(itemToDrop, CollCenter, Quaternion.identity);
+    }
 
 
 

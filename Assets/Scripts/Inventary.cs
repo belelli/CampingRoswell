@@ -14,6 +14,7 @@ public class Inventary : MonoBehaviour
     public pauseGame _stopGame;
     public GameObject _pauseMove;
 
+
     void Start()
     {
         
