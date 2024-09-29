@@ -64,10 +64,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 quest.Complete();
             }
-
-
-
-            
         }
     }
 

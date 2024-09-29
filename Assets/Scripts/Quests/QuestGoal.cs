@@ -18,7 +18,6 @@ public class QuestGoal
     
     public void ItemCollected()
     {
-        //print("entro al collision enter");
         currentAmount++;
         Debug.Log("entro a itemCollected la cantidad es "+currentAmount );
     }
