@@ -6,8 +6,6 @@ public class Avispa : MonoBehaviour
 {
     public Transform player; // Referencia al transform del jugador
     public float speed = 5f; // Velocidad de movimiento de la avispa
-    public float attackRange = 1f; // Rango de ataque
-    public int damage = 10; // Daño que hace la avispa
 
     private void Update()
     {
@@ -15,10 +13,6 @@ public class Avispa : MonoBehaviour
         MoveTowardsPlayer();
 
        
-        if (Vector3.Distance(transform.position, player.position) <= attackRange)
-        {
-            AttackPlayer();
-        }
     }
 
     private void MoveTowardsPlayer()
@@ -29,12 +23,4 @@ public class Avispa : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    private void AttackPlayer()
-    {
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(damage);
-        }
-    }
 }
