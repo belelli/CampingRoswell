@@ -12,11 +12,16 @@ public class QuestGiver : MonoBehaviour
         player.quest = quest;
     }
 
+    private void Start()
+    {
+        AcceptQuest();
+    }
 
 
-    
 
-  
-    
+
+
+
+
 
 }

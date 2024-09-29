@@ -30,10 +30,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug
-        print("debugging:");
-        print("la REQUIRED amount es "+quest.goal.requiredAmount);
-        //debug
         float VerticalAxis = Input.GetAxis("Vertical");
         float HorizontalAxis = Input.GetAxis("Horizontal");
         Vector3 forwardDirection = transform.forward * VerticalAxis;
