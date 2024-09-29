@@ -20,13 +20,16 @@ public class Item : MonoBehaviour
     public bool equipped;
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.collider.tag == "Player")
+    //    {
+            
+    //        Destroy(gameObject);
+
+
+    //    }
+    //}
 
     private void Update()
     {

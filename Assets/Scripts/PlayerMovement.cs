@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     //float _jumpForce;
     //bool _wantsToJump;
     public float _rotateSpd = 1;
+
+    //quests
+    public Quest quest;
  
     
 
@@ -26,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //debug
+        print("debugging:");
+        print("la REQUIRED amount es "+quest.goal.requiredAmount);
+        //debug
         float VerticalAxis = Input.GetAxis("Vertical");
         float HorizontalAxis = Input.GetAxis("Horizontal");
         Vector3 forwardDirection = transform.forward * VerticalAxis;
@@ -47,4 +55,25 @@ public class PlayerMovement : MonoBehaviour
         var rotation = Input.GetAxis("Mouse X") * _rotateSpd * Time.deltaTime * 500;
         transform.Rotate(0f, rotation, 0f);
     }
+
+    //item collection
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Collectible")
+        {
+            print("entro al collision enter");
+            quest.goal.ItemCollected();
+            Destroy(collision.gameObject);
+            if (quest.goal.isReached())
+            {
+                quest.Complete();
+            }
+            
+
+            
+
+        }
+    }
+    
+
 }
