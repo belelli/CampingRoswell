@@ -22,11 +22,6 @@ public class QuestGiver : MonoBehaviour
         AcceptQuest();
     }
 
-    //public void OpenQuestFinishWindow()
-    //{
-    //    QuestFinishWindow.SetActive(true);
-    //    titleText.text = quest.title;
-    //}
 
 
 

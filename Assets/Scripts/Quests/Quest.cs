@@ -29,4 +29,8 @@ public class Quest
         QuestFinishWindow.SetActive(true);
         titleText.text = title;
     }
+
+
+
+
 }
