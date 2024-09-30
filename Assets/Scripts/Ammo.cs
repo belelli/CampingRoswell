@@ -7,7 +7,8 @@ public class Ammo : MonoBehaviour
 {
     public int damage = 5;
     public float destroyTimer = 3f;
-
+    public GameObject ammoDeath;
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -17,10 +18,12 @@ public class Ammo : MonoBehaviour
             if (enemy != null)
             {
                 enemy.takeDamage(damage);
+                StartCoroutine(enemy.GrowAndShrink());
             }
 
             Destroy(gameObject, destroyTimer);
-
+            Instantiate(ammoDeath, transform.position, Quaternion.identity);
+            
         }
         
     }

@@ -929,6 +929,10 @@ PrefabInstance:
       value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 8516122254315824163, guid: 8c0fd69dcf4bc4ef4b74eacb2aefd3d0, type: 3}
+      propertyPath: ammoDeath
+      value: 
+      objectReference: {fileID: 2217322914163781054, guid: c85ff4d5da8bd384c85270152c4c45ad, type: 3}
+    - target: {fileID: 8516122254315824163, guid: 8c0fd69dcf4bc4ef4b74eacb2aefd3d0, type: 3}
       propertyPath: destroyTimer
       value: 2
       objectReference: {fileID: 0}
@@ -2537,18 +2541,13 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 4853135753315454906}
   m_SourcePrefab: {fileID: 100100000, guid: 08774eef2136f484b954509777c0fd90, type: 3}
---- !u!1 &4853135753315454905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3771540132000997215, guid: 08774eef2136f484b954509777c0fd90, type: 3}
-  m_PrefabInstance: {fileID: 4853135753315454904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4853135753315454906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4853135753315454905}
+  m_GameObject: {fileID: 8579074190308610279}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ed95714358b1c4980552318f193570, type: 3}
@@ -2563,7 +2562,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4853135753315454905}
+  m_GameObject: {fileID: 8579074190308610279}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5cff7dce9fe47d448cea097fe69c5d8, type: 3}
@@ -2572,6 +2571,11 @@ MonoBehaviour:
   player: {fileID: 1829049779}
   followRange: 5
   moveSpeed: 1
+--- !u!1 &8579074190308610279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3771540132000997215, guid: 08774eef2136f484b954509777c0fd90, type: 3}
+  m_PrefabInstance: {fileID: 4853135753315454904}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

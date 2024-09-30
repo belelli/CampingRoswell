@@ -16,6 +16,12 @@ public abstract class Enemy : MonoBehaviour
     public GameObject deathEnemyPart;
     public GameObject itemToDrop;
     public Vector3 CollCenter;
+
+    public float growthDuration = 0.005f;
+    public float growthFactor = 0.005f;
+
+    private Vector3 originalScale;
+
     public virtual void chase() { 
     
     }
@@ -26,6 +32,9 @@ public abstract class Enemy : MonoBehaviour
     public virtual void takeDamage(int damage)
     {
         hp -= damage;
+
+        GrowAndShrink();
+
         if (hp <= 0)
         {   
             Destroy(gameObject);
@@ -48,6 +57,8 @@ public abstract class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
         CollCenter = capsuleCollider.transform.TransformPoint(capsuleCollider.center);
+        originalScale = transform.localScale;
+
     }
 
     // Update is called once per frame
@@ -69,5 +80,30 @@ public abstract class Enemy : MonoBehaviour
 
         }
     
+    }
+
+    public IEnumerator GrowAndShrink()
+    {
+        Vector3 grownScale = originalScale * growthFactor;
+
+        // Grow
+        float elapsedTime = 0f;
+        while (elapsedTime < growthDuration)
+        {
+            transform.localScale = Vector3.Lerp(originalScale, grownScale, elapsedTime / growthDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Shrink
+        elapsedTime = 0f;
+        while (elapsedTime < growthDuration)
+        {
+            transform.localScale = Vector3.Lerp(grownScale, originalScale, elapsedTime / growthDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
     }
 }
