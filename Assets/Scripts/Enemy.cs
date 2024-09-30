@@ -36,7 +36,8 @@ public abstract class Enemy : MonoBehaviour
         GrowAndShrink();
 
         if (hp <= 0)
-        {   
+        {
+            //DestroyAll();
             Destroy(gameObject);
             Instantiate(deathEnemyPart, CollCenter, Quaternion.identity);
             DropItem();
@@ -106,4 +107,15 @@ public abstract class Enemy : MonoBehaviour
 
         transform.localScale = originalScale;
     }
+
+    /*private void DestroyAll()
+    {
+        Transform parentTransform = transform.parent;
+        if (parentTransform != null)
+        {
+            Destroy(parentTransform.gameObject);
+        }
+        
+        Destroy(gameObject); probando cositas de destroy 
+    }*/
 }

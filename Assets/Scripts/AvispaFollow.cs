@@ -9,6 +9,8 @@ public class AvispaFollow : MonoBehaviour
     public float moveSpeed = 1f;
     public float turnSpeed;
 
+    /* public float lineLength; un comando para ver una cosita de direccion*/
+
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -18,6 +20,7 @@ public class AvispaFollow : MonoBehaviour
         {
             FollowPlayer();
             LookAtPlayer();
+            /*OnGizmos(); un comando para ver una cosita de direccion*/
         }
     }
 
@@ -38,4 +41,10 @@ public class AvispaFollow : MonoBehaviour
         rot.z = 0;
         transform.rotation = rot;
     }
+
+    /* void OnGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * lineLength);
+    } un comando para ver una cosita de direccion*/
+
 }
