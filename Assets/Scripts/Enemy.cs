@@ -56,8 +56,8 @@ public abstract class Enemy : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        CollCenter = capsuleCollider.transform.TransformPoint(capsuleCollider.center);
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        CollCenter = boxCollider.transform.TransformPoint(boxCollider.center);
         originalScale = transform.localScale;
 
     }
@@ -70,7 +70,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void DetectingPlayer() 
     {
-        float distance = Vector3.Distance(playerPosition.position, transform.position);
+       /* float distance = Vector3.Distance(playerPosition.position, transform.position);
 
         if (distance <= detectionRange) 
         {
@@ -79,7 +79,7 @@ public abstract class Enemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
             agent.SetDestination(playerPosition.position);
 
-        }
+        }*/
     
     }
 
