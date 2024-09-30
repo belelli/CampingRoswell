@@ -2428,6 +2428,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
       propertyPath: range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
+      propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
@@ -2457,7 +2461,7 @@ PrefabInstance:
     - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
       propertyPath: playerPosition
       value: 
-      objectReference: {fileID: 1520369533}
+      objectReference: {fileID: 1829049779}
     - target: {fileID: 7627054055087015757, guid: 08774eef2136f484b954509777c0fd90, type: 3}
       propertyPath: myCurve.m_PostInfinity
       value: 1
@@ -2570,7 +2574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1829049779}
   followRange: 5
-  moveSpeed: 1
+  moveSpeed: 5
+  turnSpeed: 0
 --- !u!1 &8579074190308610279 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3771540132000997215, guid: 08774eef2136f484b954509777c0fd90, type: 3}

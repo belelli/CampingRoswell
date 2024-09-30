@@ -12,14 +12,13 @@ public class Wasp : Enemy
     
 
 
-    void OnCollisionEnter(Collision collision)
+    /* void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") 
         {           
-            AttackPlayer(); 
+            AtackWasp(); 
         }
-    }
-
+    }*/
     
 
     public void Update()
@@ -40,7 +39,7 @@ public class Wasp : Enemy
 
     }
 
-    public void AttackPlayer()
+   /* public void AttackPlayer()
     {
         PlayerHealth playerHealth = playerPosition.GetComponent<PlayerHealth>();
         if (playerHealth != null)
@@ -48,7 +47,7 @@ public class Wasp : Enemy
             playerHealth.TakeDamage(dmg);
             Debug.Log("Te comiste " + dmg);
         }
-    }
+    }*/
 
     public void levitateAnim()
     {        

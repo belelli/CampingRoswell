@@ -6,7 +6,8 @@ public class AvispaFollow : MonoBehaviour
 {
     public Transform player; 
     public float followRange = 5f; 
-    public float moveSpeed = 1f; 
+    public float moveSpeed = 1f;
+    public float turnSpeed;
 
     void Update()
     {
@@ -31,8 +32,10 @@ public class AvispaFollow : MonoBehaviour
     void LookAtPlayer()
     {
 
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 80, 0); 
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * moveSpeed);
+        Vector3 dir = player.position - transform.position;
+        Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), turnSpeed * Time.deltaTime);
+        rot.x = 0;
+        rot.z = 0;
+        transform.rotation = rot;
     }
 }

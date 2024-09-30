@@ -33,6 +33,8 @@ public class PlayerAtackWasp : MonoBehaviour
     void Die()
     {
         Debug.Log("El jugador ha muerto.");
-        
+        Time.timeScale = 0;
+
+
     }
 }
