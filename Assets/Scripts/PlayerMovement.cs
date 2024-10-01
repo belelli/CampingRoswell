@@ -26,11 +26,78 @@ public class PlayerMovement : MonoBehaviour
     public float _jumpCoolDown;
     public float airMultiplier;
     bool readyToJump = true;
-  
+
+     /* // PLATAFORMA
+    Vector3 groundPos;
+    Vector3 lastGroundPos;
+    Vector3 currentPos;
+
+    string groundName;
+    string lastgroundName;
+
+    bool isJump;
+
+    CharacterController characterController;
 
 
- 
-    
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
+    private void OnTriggerStay(Collider other)  // Funcion que se cumple si el jugador permanece dentro de nuestro collider marcado como istrigger
+    {
+        if(other.tag == "platform") 
+        {
+            if (!isJump) 
+            {
+                RaycastHit hit;
+                if(Physics.SphereCast(transform.position, characterController.radius, -transform.up,out hit)) 
+                {
+                    GameObject inGround = hit.collider.gameObject; // Almaceno objeto con el que collisiona el raycast
+                    groundName = inGround.name;
+                    groundPos = inGround.transform.position; // posicion del objeto en el que estamos
+
+                    if(groundPos != lastGroundPos && groundName == lastgroundName) 
+                    {
+                        currentPos = Vector3.zero; // Reseteo la posicion que avanzara el personaje
+                        currentPos += groundPos - lastGroundPos; // calculo la posicion que debera moverse el personaje
+                        characterController.Move(currentPos); // agregamos el movimiento calculado a nuestro personaje
+                    
+                    }
+
+                    lastgroundName = groundName;
+                    lastGroundPos = groundPos;
+                
+                }
+            
+            }
+            if (Input.GetKey(KeyCode.Space))  // si el personaje salta se cumplira esto 
+            {
+                if (!characterController.isGrounded) // si el jugador no esta en el suelo
+                {
+                    currentPos = Vector3.zero;
+                    lastGroundPos = Vector3.zero;
+                    lastgroundName = null;
+                    isJump = true;
+                
+                }
+            
+            }
+            if (characterController.isGrounded)  // si el jugador esta tocando el sueloS
+            {
+                isJump = false;
+            
+            }
+        
+        }
+    }
+     */
+
+
+
+
+
 
     private void Awake()
     {
@@ -53,12 +120,12 @@ public class PlayerMovement : MonoBehaviour
         //JUMP controls
         print("ready to jump" + readyToJump);
         print("is grounded" + grounded);
-        if (Input.GetKey(KeyCode.Space) && readyToJump && grounded){
+        if (Input.GetKey(KeyCode.Space) && readyToJump && grounded) {
             readyToJump = false;
             Jump();
             //investigar sobre esto
             Invoke(nameof(ResetJump), _jumpCoolDown);
-        }  
+        }
 
         //GroundCheck
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
@@ -72,15 +139,15 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.drag = 0;
         }
-        
-        
+
+
         //Speed Control
         Vector3 flatSpeed = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-        print("la velocidad"+flatSpeed.magnitude);
-        if(flatSpeed.magnitude > _speed)
+        print("la velocidad" + flatSpeed.magnitude);
+        if (flatSpeed.magnitude > _speed)
         {
             Vector3 limitedVel = flatSpeed.normalized * _speed;
-            _rb.velocity = new Vector3(limitedVel.x,_rb.velocity.y, limitedVel.z);
+            _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
         }
 
     }
@@ -91,20 +158,20 @@ public class PlayerMovement : MonoBehaviour
         //_rb.velocity = _direction * _speed;
 
         if (grounded) {
-            _rb.AddForce(_speed * _direction *10f, ForceMode.Force);
+            _rb.AddForce(_speed * _direction * 10f, ForceMode.Force);
         }
         else
         {
-            _rb.AddForce(_speed * _direction *10f * airMultiplier, ForceMode.Force);
+            _rb.AddForce(_speed * _direction * 10f * airMultiplier, ForceMode.Force);
         }
 
-        
+
 
 
         RotatePlayer();
     }
 
-    void RotatePlayer() 
+    void RotatePlayer()
     {
         var rotation = Input.GetAxis("Mouse X") * _rotateSpd * Time.deltaTime * 500;
         transform.Rotate(0f, rotation, 0f);
@@ -140,6 +207,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+  
 
 
 
