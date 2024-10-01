@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _rb.AddForce(_speed * _direction *10f, ForceMode.Force);
+            _rb.AddForce(_speed * _direction *10f * airMultiplier, ForceMode.Force);
         }
 
         

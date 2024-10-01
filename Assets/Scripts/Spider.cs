@@ -24,21 +24,14 @@ public class Spider : Enemy
     void Update()
     {
        ShootAtPlayer();
-        rotateTowardsPlayer();
+       rotateTowardsPlayer();
     }
 
     void ShootAtPlayer()
     {
-        
         _bulletTime -= Time.deltaTime;
-
-        //print("update! SHOOT"); comento esta línea por que ya vimos que anda y spammea jaja
-        if (_bulletTime > 0) return;
-        
+        if (_bulletTime > 0) return;        
         _bulletTime = _timer;
-
-        print("Spawneo?");
-
 
        var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
        bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
