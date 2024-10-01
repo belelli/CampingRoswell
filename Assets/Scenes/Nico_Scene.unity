@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 340896754}
   - component: {fileID: 340896753}
   - component: {fileID: 340896752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +893,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1810075724241738199, guid: 8c0fd69dcf4bc4ef4b74eacb2aefd3d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -22.08
       objectReference: {fileID: 0}
     - target: {fileID: 1810075724241738199, guid: 8c0fd69dcf4bc4ef4b74eacb2aefd3d0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1503,6 +1503,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 627758280856432204, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 627758280856432204, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
@@ -1518,21 +1522,61 @@ PrefabInstance:
       propertyPath: slotHolder
       value: 
       objectReference: {fileID: 826317324}
+    - target: {fileID: 4368650758252562183, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368650758252562183, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.49
+      objectReference: {fileID: 0}
     - target: {fileID: 5150347178508818796, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 597952052}
     - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: _speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: _jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: groundDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: playerHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: _jumpCoolDown
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: airMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: quest.goal.goalType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 5652856945742841966, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: quest.goal.requiredAmount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5722302475857539391, guid: ddc1f52f466e194439a85825e545870a, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6054387544314944760, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 7475849556106959026, guid: ddc1f52f466e194439a85825e545870a, type: 3}
       propertyPath: m_LocalPosition.x
