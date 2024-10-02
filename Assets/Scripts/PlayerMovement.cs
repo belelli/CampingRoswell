@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump = true;
 
+    //Padre
+    public Transform playerParent;
+
      /* // PLATAFORMA
     Vector3 groundPos;
     Vector3 lastGroundPos;
@@ -207,6 +210,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+
 
 
   
