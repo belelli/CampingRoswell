@@ -27,8 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump = true;
 
+    Animator _animator;
+
     //Padre
-    public Transform playerParent;
+    //public Transform playerParent;
 
      /* // PLATAFORMA
     Vector3 groundPos;
@@ -106,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
 
@@ -152,6 +155,9 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatSpeed.normalized * _speed;
             _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
         }
+
+        //ANIMATOR
+        _animator.SetFloat("Speed", _direction.sqrMagnitude);
 
     }
 
