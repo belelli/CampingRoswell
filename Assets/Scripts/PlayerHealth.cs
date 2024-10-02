@@ -11,13 +11,10 @@ public class PlayerHealth : MonoBehaviour
        
         health -= damage;
 
-       
+       print("salud " +  health);
         if (health <= 0)
         {
             Die();
-            
-
-            
         }
     }
 

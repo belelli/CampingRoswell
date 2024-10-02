@@ -6,9 +6,11 @@ public class Spider : Enemy
 {
     [SerializeField] private float _timer;
     [SerializeField] private float _bulletTime;
-    public GameObject enemyBullet;
     public Transform spawnPoint;
     public float bulletSpeed;
+    public GameObject enemyBullet;
+    
+    
     
 
     //pa girar
@@ -19,6 +21,7 @@ public class Spider : Enemy
     {
         
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -27,6 +30,8 @@ public class Spider : Enemy
        rotateTowardsPlayer();
     }
 
+    
+
     void ShootAtPlayer()
     {
         _bulletTime -= Time.deltaTime;
@@ -34,7 +39,7 @@ public class Spider : Enemy
         _bulletTime = _timer;
 
        var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
-       bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
+       //bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
     }
 
     void rotateTowardsPlayer()
@@ -45,6 +50,8 @@ public class Spider : Enemy
         rot.z = 0;
         transform.rotation = rot;
     }
+
+   
 
     
 }

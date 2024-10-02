@@ -33,7 +33,7 @@ public class Wasp : Enemy
         }*/
         
 
-        levitateAnim();
+        //levitateAnim();
 
 
 
