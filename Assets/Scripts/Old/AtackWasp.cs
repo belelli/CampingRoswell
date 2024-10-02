@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AtackWasp : MonoBehaviour
 {
-    public float damage = 10f; 
+    public int damage = 10; 
     public float attackRange = 5f; 
     public float attackCooldown = 2f; 
 

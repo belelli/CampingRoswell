@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAtackWasp : MonoBehaviour
 {
     public static PlayerAtackWasp instance; 
-    public float health = 100f;
+    public int health = 100;
 
     MeshRenderer meshh;
     public Color emissionColor = Color.red;
@@ -29,7 +29,7 @@ public class PlayerAtackWasp : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         health -= amount;
         Debug.Log("¡Has sido picado! Salud restante: " + health);

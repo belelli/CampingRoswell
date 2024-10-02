@@ -10,6 +10,8 @@ public class WebProjectile : MonoBehaviour
     [SerializeField]
     float _speed;
     public PlayerMovement player;
+
+    public int damageAmmo = 5; //Carlos: agregué esta variable para ser usada como daño cuando el projectil toca al player
     // Start is called before the first frame update
 
     void Start()
@@ -27,8 +29,14 @@ public class WebProjectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            PlayerAtackWasp hpPlayer = collision.gameObject.GetComponent<PlayerAtackWasp>(); //Carlos: creo variable para acceder a los componentes del jugador
             
+            if (hpPlayer != null) //Carlos: se asegura que el componente esté vivito y coleando
+            {
+                hpPlayer.TakeDamage(damageAmmo); //Carlos: accedo al metodo para hacer daño
+            }
+
+            Destroy(gameObject); // Carlos: moví el destroy al final
         }
     }
 }
