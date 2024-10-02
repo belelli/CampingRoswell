@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 223267985}
   - component: {fileID: 223267987}
   - component: {fileID: 223267986}
+  - component: {fileID: 223267988}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -150,12 +151,12 @@ Transform:
   m_GameObject: {fileID: 223267984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06891894, y: 1.26, z: 1.8995531}
+  m_LocalPosition: {x: 0.06891894, y: 1.26, z: 4.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1743855590}
   - {fileID: 1681365566}
+  - {fileID: 1743855590}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &223267986
@@ -206,8 +207,41 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &223267988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223267984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecab54af6a0e702458946e225e285dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 7
+  _rotateSpd: 1
+  quest:
+    isActive: 0
+    title: 
+    description: 
+    goal:
+      goalType: 1
+      requiredAmount: 3
+      currentAmount: 0
+    QuestFinishWindow: {fileID: 0}
+    titleText: {fileID: 0}
+  playerHeight: 2
+  grounded: 0
+  groundDrag: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  _jumpForce: 10
+  _jumpCoolDown: 0.25
+  airMultiplier: 0.4
 --- !u!1 &702744717
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +511,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5200444207059497868, guid: acc51b177a8e6094fa6bbaf4cabbdfc9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -510,7 +548,7 @@ Transform:
   m_GameObject: {fileID: 1681365565}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13258386, y: -0, z: -0, w: 0.9911718}
-  m_LocalPosition: {x: 0.061082587, y: 8.719999, z: -6.009553}
+  m_LocalPosition: {x: 0.1300015, y: 2.08, z: -4.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
