@@ -7,6 +7,7 @@ public class SlingShot : MonoBehaviour
     public Transform Projectile;
     public Transform DrawFrom;
     public Transform DrawTo;
+    public Transform spawnAmmo;
 
 
     public StringPoint slingshotString;
@@ -46,7 +47,7 @@ public class SlingShot : MonoBehaviour
     {
         draw = true;
         
-        currentProjectile = Instantiate(Projectile, DrawFrom.position, Quaternion.identity, transform );
+        currentProjectile = Instantiate(Projectile, spawnAmmo.position, Quaternion.identity, transform );
         currentProjectile.forward = transform.forward;
         slingshotString.CenterPoint = currentProjectile.transform;
 

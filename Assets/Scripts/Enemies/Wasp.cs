@@ -23,8 +23,8 @@ public class Wasp : Enemy
 
     public void Update()
     {
-
-        DetectingPlayer();
+        chase();
+        //DetectingPlayer();
 
 
         /*if (Vector3.Distance(transform.position, playerPosition.position) <= range)

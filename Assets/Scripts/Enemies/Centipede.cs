@@ -19,7 +19,7 @@ public class Centipede : Enemy
     // Update is called once per frame
     void Update()
     {
-        DetectingPlayer();
+        //DetectingPlayer();
     }
 
     /*public void DetectingPlayer() 

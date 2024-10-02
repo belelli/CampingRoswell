@@ -15,16 +15,27 @@ public abstract class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     public GameObject deathEnemyPart;
     public GameObject itemToDrop;
-    public Vector3 CollCenter;
+    /*public Vector3 CollCenter; Carl: deprecated variable*/
 
     public float growthDuration = 0.005f;
     public float growthFactor = 0.005f;
 
     private Vector3 originalScale;
 
-    public virtual void chase() { 
-    
+    public virtual void chase() 
+    {
+        float distance = Vector3.Distance(playerPosition.position, transform.position);
+
+        if (distance <= detectionRange)
+        {
+            Vector3 direction = (playerPosition.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
+            agent.SetDestination(playerPosition.position);
+
+        }
     }
+    
 
     public virtual void attack() { }
 
@@ -37,9 +48,9 @@ public abstract class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
-            //DestroyAll();
+            
             Destroy(gameObject);
-            Instantiate(deathEnemyPart, CollCenter, Quaternion.identity);
+            Instantiate(deathEnemyPart, transform.position, Quaternion.identity);//Carl: cambié el collcenter por transform.position, funciona bien en la nueva avispa prefab con todo centrado digamos
             DropItem();
 
         }
@@ -47,7 +58,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void DropItem()
     {
-        GameObject itemDropped = Instantiate(itemToDrop, CollCenter, Quaternion.identity);
+        GameObject itemDropped = Instantiate(itemToDrop, transform.position, Quaternion.identity);//Carl: idem linea 53
     }
 
 
@@ -55,33 +66,21 @@ public abstract class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        BoxCollider boxCollider = GetComponent<BoxCollider>();
-        CollCenter = boxCollider.transform.TransformPoint(boxCollider.center);
+        agent = GetComponent<NavMeshAgent>(); 
+        /*BoxCollider boxCollider = GetComponent<BoxCollider>();Carl: decrecated line*/
+        /*CollCenter = boxCollider.transform.TransformPoint(boxCollider.center); Carl: deprecated line*/
         originalScale = transform.localScale;
 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        DetectingPlayer();
+        chase(); //Carlos: comenté las líneas viejas de navmesh, pruebo con este otro método que le agregué para perseguir
+       // DetectingPlayer();
     }
-
-    public void DetectingPlayer() 
-    {
-       /* float distance = Vector3.Distance(playerPosition.position, transform.position);
-
-        if (distance <= detectionRange) 
-        {
-            Vector3 direction = (playerPosition.position - transform.position).normalized;
-            transform.position += direction * speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
-            agent.SetDestination(playerPosition.position);
-
-        }*/
     
-    }
 
     public IEnumerator GrowAndShrink()
     {
@@ -108,14 +107,5 @@ public abstract class Enemy : MonoBehaviour
         transform.localScale = originalScale;
     }
 
-    /*private void DestroyAll()
-    {
-        Transform parentTransform = transform.parent;
-        if (parentTransform != null)
-        {
-            Destroy(parentTransform.gameObject);
-        }
-        
-        Destroy(gameObject); probando cositas de destroy 
-    }*/
+
 }
