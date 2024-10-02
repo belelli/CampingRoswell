@@ -22,6 +22,12 @@ public abstract class Enemy : MonoBehaviour
 
     private Vector3 originalScale;
 
+    public int damage = 10;
+    public float attackRange = 5f;
+    public float attackCooldown = 2f;
+
+    private float lastAttackTime;
+
     public virtual void chase() 
     {
         float distance = Vector3.Distance(playerPosition.position, transform.position);
@@ -37,7 +43,19 @@ public abstract class Enemy : MonoBehaviour
     }
     
 
-    public virtual void attack() { }
+    public virtual void attack() 
+    {
+        if (Vector3.Distance(transform.position, PlayerAtackWasp.instance.transform.position) < attackRange)
+        {
+            if (Time.time >= lastAttackTime + attackCooldown)
+            {
+                attack();
+                lastAttackTime = Time.time;
+            }
+        }
+
+
+    }
 
 
     public virtual void takeDamage(int damage)
