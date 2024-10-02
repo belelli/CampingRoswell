@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAtackWasp : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class PlayerAtackWasp : MonoBehaviour
     void Die()
     {
         Debug.Log("El jugador ha muerto.");
-        Time.timeScale = 0;
+        SceneManager.LoadScene(2);
 
 
     }

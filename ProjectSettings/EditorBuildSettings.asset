@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nico_Scene.unity
     guid: 1a16d125c62b0bd4881d55f316eb4159
+  - enabled: 1
+    path: Assets/Scenes/Derrota.unity
+    guid: 01f35cd02395efe4c9019e041223ed93
   m_configObjects: {}

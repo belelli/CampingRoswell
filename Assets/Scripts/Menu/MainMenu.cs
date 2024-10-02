@@ -5,16 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Jugar() 
+    public void Jugar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    
+        SceneManager.LoadScene(1);
     }
 
-    public void Salir() 
+
+    public void Salir()
     {
-        Debug.Log("Salir");
+        SceneManager.LoadScene(0);
+        Debug.Log("Salir...");
         Application.Quit();
-    
+
+    }
+
+    public void Opciones()
+    {
+        SceneManager.LoadScene("MenuOpciones");
+
+
     }
 }
