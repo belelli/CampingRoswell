@@ -38,6 +38,7 @@ public abstract class Enemy : MonoBehaviour
             transform.position += direction * speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
             agent.SetDestination(playerPosition.position);
+            transform.LookAt(playerPosition);
 
         }
     }
