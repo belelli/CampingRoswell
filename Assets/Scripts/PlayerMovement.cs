@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump = true;
 
-    Animator _animator;
+    /* Animator _animator; pertenece a otro prefab */ 
 
     //Padre
     //public Transform playerParent;
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
-        _animator = GetComponentInChildren<Animator>();
+        /* _animator = GetComponentInChildren<Animator>(); pertenece a otro prefab */
     }
 
 
@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //ANIMATOR
-        _animator.SetFloat("Speed", _direction.sqrMagnitude);
+        /* _animator.SetFloat("Speed", _direction.sqrMagnitude); linea de animator del otro prefab de player*/
 
     }
 
