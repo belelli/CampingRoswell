@@ -242,6 +242,8 @@ MonoBehaviour:
   _jumpForce: 10
   _jumpCoolDown: 0.25
   airMultiplier: 0.4
+  _xAxisName: xAxis
+  _zAxisName: zAxis
 --- !u!1 &702744717
 GameObject:
   m_ObjectHideFlags: 0

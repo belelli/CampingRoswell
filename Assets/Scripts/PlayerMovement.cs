@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    float _verticalAxis;
+    float _horizontalAxis;
     Vector3 _direction;
     [SerializeField]
     float _speed;
@@ -27,80 +30,10 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump = true;
 
-    /* Animator _animator; pertenece a otro prefab */ 
-
-    //Padre
-    //public Transform playerParent;
-
-     /* // PLATAFORMA
-    Vector3 groundPos;
-    Vector3 lastGroundPos;
-    Vector3 currentPos;
-
-    string groundName;
-    string lastgroundName;
-
-    bool isJump;
-
-    CharacterController characterController;
-
-
-    private void Start()
-    {
-        characterController = GetComponent<CharacterController>();
-    }
-
-    private void OnTriggerStay(Collider other)  // Funcion que se cumple si el jugador permanece dentro de nuestro collider marcado como istrigger
-    {
-        if(other.tag == "platform") 
-        {
-            if (!isJump) 
-            {
-                RaycastHit hit;
-                if(Physics.SphereCast(transform.position, characterController.radius, -transform.up,out hit)) 
-                {
-                    GameObject inGround = hit.collider.gameObject; // Almaceno objeto con el que collisiona el raycast
-                    groundName = inGround.name;
-                    groundPos = inGround.transform.position; // posicion del objeto en el que estamos
-
-                    if(groundPos != lastGroundPos && groundName == lastgroundName) 
-                    {
-                        currentPos = Vector3.zero; // Reseteo la posicion que avanzara el personaje
-                        currentPos += groundPos - lastGroundPos; // calculo la posicion que debera moverse el personaje
-                        characterController.Move(currentPos); // agregamos el movimiento calculado a nuestro personaje
-                    
-                    }
-
-                    lastgroundName = groundName;
-                    lastGroundPos = groundPos;
-                
-                }
-            
-            }
-            if (Input.GetKey(KeyCode.Space))  // si el personaje salta se cumplira esto 
-            {
-                if (!characterController.isGrounded) // si el jugador no esta en el suelo
-                {
-                    currentPos = Vector3.zero;
-                    lastGroundPos = Vector3.zero;
-                    lastgroundName = null;
-                    isJump = true;
-                
-                }
-            
-            }
-            if (characterController.isGrounded)  // si el jugador esta tocando el sueloS
-            {
-                isJump = false;
-            
-            }
-        
-        }
-    }
-     */
-
-
-
+    //Variables para Animaciones
+    Animator _animator;
+    [SerializeField] private string _xAxisName;
+    [SerializeField] private string _zAxisName;
 
 
 
@@ -108,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
-        /* _animator = GetComponentInChildren<Animator>(); pertenece a otro prefab */
+        _animator = GetComponentInChildren<Animator>(); 
     }
 
 
@@ -116,14 +49,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float VerticalAxis = Input.GetAxis("Vertical");
-        float HorizontalAxis = Input.GetAxis("Horizontal");
-        Vector3 forwardDirection = transform.forward * VerticalAxis;
-        Vector3 rightDirection = transform.right * HorizontalAxis;
+        //MOVEMENT Controls
+        _verticalAxis = Input.GetAxis("Vertical");
+        _horizontalAxis = Input.GetAxis("Horizontal");
+        Vector3 forwardDirection = transform.forward * _verticalAxis;
+        Vector3 rightDirection = transform.right * _horizontalAxis;
         _direction = forwardDirection + rightDirection;
         _direction.Normalize();
 
-        //JUMP controls
+        //JUMP Controls
         print("ready to jump" + readyToJump);
         print("is grounded" + grounded);
         if (Input.GetKey(KeyCode.Space) && readyToJump && grounded) {
@@ -156,29 +90,34 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
         }
 
-        //ANIMATOR
-        /* _animator.SetFloat("Speed", _direction.sqrMagnitude); linea de animator del otro prefab de player*/
+        //ANIMATOR esto setea la velocidad de la animacion a la velocidad de _direction
+        //_animator.SetFloat("Speed", _direction.sqrMagnitude);
+        _animator.SetFloat(_xAxisName, _verticalAxis);
+        _animator.SetFloat(_zAxisName, _horizontalAxis);
+
 
     }
 
     private void FixedUpdate()
     {
-        //Usar este para volver al movimiento original(gravedad rota)
-        //_rb.velocity = _direction * _speed;
-
-        if (grounded) {
-            _rb.AddForce(_speed * _direction * 10f, ForceMode.Force);
-        }
-        else
-        {
-            _rb.AddForce(_speed * _direction * 10f * airMultiplier, ForceMode.Force);
-        }
-
-
-
-
+        Movement(_verticalAxis, _horizontalAxis);
         RotatePlayer();
     }
+
+    private void Movement(float xAxis, float zAxis)
+    {
+        if (xAxis != 0f || zAxis !=0) {
+            if (grounded)
+            {
+                _rb.AddForce(_speed * _direction * 10f, ForceMode.Force);
+            }
+            else
+            {
+                _rb.AddForce(_speed * _direction * 10f * airMultiplier, ForceMode.Force);
+            }
+        }
+    }
+
 
     void RotatePlayer()
     {
