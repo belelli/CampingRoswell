@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody _rb;
     CapsuleCollider _capsuleCollider;
     public float _rotateSpd = 1;
+    public float fallMultiplier;
 
     //quests
     public Quest quest;
@@ -119,6 +121,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement(_verticalAxis, _horizontalAxis);
         RotatePlayer();
+        Fall();
+    }
+
+    private void Fall()
+    {
+        if (isFalling(_rb))
+        {
+            _rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime;
+        }
     }
 
     private void Movement(float xAxis, float zAxis)
@@ -146,7 +157,6 @@ public class PlayerMovement : MonoBehaviour
     //JUMP
     private void Jump()
     {
-        print("SALTO");
         _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
         _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
     }
