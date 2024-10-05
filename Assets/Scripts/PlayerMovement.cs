@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public float _jumpCoolDown;
     public float airMultiplier;
     bool readyToJump = true;
+    
 
     //Variables para Animaciones
     Animator _animator;
@@ -65,10 +66,12 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             //investigar sobre esto
             Invoke(nameof(ResetJump), _jumpCoolDown);
+            //Animator
+            _animator.SetTrigger("Jump");
         }
 
         //GroundCheck
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.1f + 0.2f, whatIsGround);
 
         //Handle drag
         if (grounded)
@@ -83,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Speed Control
         Vector3 flatSpeed = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-        print("la velocidad" + flatSpeed.magnitude);
+        //print("la velocidad" + flatSpeed.magnitude);
         if (flatSpeed.magnitude > _speed)
         {
             Vector3 limitedVel = flatSpeed.normalized * _speed;
@@ -94,6 +97,20 @@ public class PlayerMovement : MonoBehaviour
         //_animator.SetFloat("Speed", _direction.sqrMagnitude);
         _animator.SetFloat(_xAxisName, _verticalAxis);
         _animator.SetFloat(_zAxisName, _horizontalAxis);
+        //animator groundCheck
+        if (grounded)
+        {
+            _animator.SetTrigger("Landed");
+        }
+        
+        if (isFalling(_rb))
+        {
+            _animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            _animator.SetBool("isFalling", false);
+        }
 
 
     }
@@ -137,6 +154,11 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private bool isFalling(Rigidbody rb)
+    {
+        return (_rb.velocity.y < 0 && !grounded);
     }
 
 
