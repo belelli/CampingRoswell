@@ -102,7 +102,8 @@ public class PlayerMovement : MonoBehaviour
         //animator groundCheck
         if (grounded)
         {
-            _animator.SetTrigger("Landed");
+            //_animator.SetTrigger("Landed");
+            _animator.SetBool("Grounded", true);
         }
         
         if (isFalling(_rb))
