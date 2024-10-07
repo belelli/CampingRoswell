@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Spider : Enemy
 {
-    [SerializeField] private float _timer;
-    [SerializeField] private float _bulletTime;
+    
     public Transform spawnPoint;
     public float bulletSpeed;
     public GameObject enemyBullet;
+    public float lastAtk;
+    public float atkCdw = 4f;
 
-    [SerializeField] Animator _animator;
-    
-    
+
+
 
     //pa girar
     public float turnSpeed;
@@ -20,48 +20,55 @@ public class Spider : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-       ShootAtPlayer();
-       rotateTowardsPlayer();
-
-        if (Input.GetKey(KeyCode.E)) { _animator.Play("TakeDamage"); }
-        if (Input.GetKey(KeyCode.Q)) 
-        {           
-            _animator.Play("Death",-1,0f);
-            
-
-        }
-
-    }
-
-    
-
-    void ShootAtPlayer()
-    {       
-
-        _bulletTime -= Time.deltaTime;
-        if (_bulletTime <= 0) 
+        switch (currentState)
         {
-            _animator.Play("Attack1");
+            case EnemyState.Idle:
+                Idle();
+                break;            
+            case EnemyState.Attack:
+                attack();
+                break;
+            case EnemyState.Damage:
 
-            if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f) 
-            {                
-                _bulletTime = _timer;
-                var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
-            }
-            
+                break;
+            case EnemyState.Death:
 
-        };   
-
-       
-       //bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
+                break;
+        }
+        attack();
+        rotateTowardsPlayer();
+        if (Input.GetKeyDown(KeyCode.E)) { takeDamage(1); }
     }
+
+
+
+    //void ShootAtPlayer()
+    //{
+
+    //    _bulletTime -= Time.deltaTime;
+    //    if (_bulletTime <= 0)
+    //    {
+    //        attack();
+
+    //        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
+    //        {
+    //            _bulletTime = _timer;
+    //            var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
+    //        }
+
+
+    //    };
+
+
+    //    //bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
+    //}
 
     void rotateTowardsPlayer()
     {
@@ -72,7 +79,61 @@ public class Spider : Enemy
         transform.rotation = rot;
     }
 
-   
+    public override void Idle()
+    {
+        animator.SetBool("IsIdle", true);
 
-    
+    }
+
+    public override void chase()
+    {
+        //dejo vacío ya que chase no lo usamos en la spider
+    }
+
+    public override void attack()
+    {
+        
+        if (Time.time >= lastAtk + atkCdw)
+        {
+            lastAtk = Time.time;
+            animator.Play("Attack1");                        
+
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
+            {                
+                var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
+                
+            }
+            
+        };
+    }
+
+    public override void ReturnToChase()
+    {
+        //idem línea 75
+    }
+
+    public override void takeDamage(int damage)
+    {
+        hp -= damage;
+        animator.SetBool("IsDamaging", true);
+        StartCoroutine(GrowAndShrink());
+
+        if (hp <= 0)
+        {            
+            currentState = EnemyState.Death;
+            animator.SetTrigger("Death"); // Activar la animación de muertes
+            Instantiate(deathEnemyPart, transform.position, Quaternion.identity);
+            Destroy(gameObject, 2f);
+            DropItem();
+        }
+        else
+        {
+
+            currentState = EnemyState.Damage; // Cambiar a estado de daño
+            
+        }
+    }
+
+
+
 }

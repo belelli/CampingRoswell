@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8d4a045ab35d448d40b3ea0c614d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyTime: 5
-  _speed: 30
+  _destroyTime: 4
+  _speed: 20
+  player: {fileID: 0}
+  damageAmmo: 5
 --- !u!135 &-1181909375807502590
 SphereCollider:
   m_ObjectHideFlags: 0

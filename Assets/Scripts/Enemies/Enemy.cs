@@ -42,7 +42,7 @@ public abstract class Enemy : MonoBehaviour
     public float chaseSpeed = 5f;
     public int health = 100;
 
-    private Animator animator;
+    public Animator animator;
     private Transform player;
 
     void Start()
@@ -102,7 +102,7 @@ public abstract class Enemy : MonoBehaviour
         transform.localScale = originalScale;
     }
 
-    void Idle()
+    public virtual void Idle() //estaba en solo void, lo pasé a virtual para poder overridear en la araña
     {
         animator.SetBool("IsIdle", true);
 
@@ -194,7 +194,7 @@ public abstract class Enemy : MonoBehaviour
             
     }
 
-    void ReturnToChase()
+    public virtual void ReturnToChase()
     {
         animator.SetBool("IsDamaging", false);
 
