@@ -7,14 +7,14 @@ public class MovingPlatformCollision : MonoBehaviour
 
 
     [SerializeField] Transform platform;
-    public Transform playerParent;
+    //public Transform playerParent;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
             //other.gameObject.transform.parent = platform;
-            playerParent.gameObject.transform.parent = platform;
+            other.gameObject.transform.parent = platform;
         }
     }
 
@@ -23,7 +23,7 @@ public class MovingPlatformCollision : MonoBehaviour
         if (other.gameObject.tag.Equals("Player"))
         {
             //other.gameObject.transform.parent = null;
-            playerParent.gameObject.transform.parent = null;
+            other.gameObject.transform.parent = null;
         }
     }
 

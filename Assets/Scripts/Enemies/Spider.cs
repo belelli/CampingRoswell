@@ -9,7 +9,8 @@ public class Spider : Enemy
     public Transform spawnPoint;
     public float bulletSpeed;
     public GameObject enemyBullet;
-    
+
+    [SerializeField] Animator _animator;
     
     
 
@@ -28,17 +29,37 @@ public class Spider : Enemy
     {
        ShootAtPlayer();
        rotateTowardsPlayer();
+
+        if (Input.GetKey(KeyCode.E)) { _animator.Play("TakeDamage"); }
+        if (Input.GetKey(KeyCode.Q)) 
+        {           
+            _animator.Play("Death",-1,0f);
+            
+
+        }
+
     }
 
     
 
     void ShootAtPlayer()
-    {
-        _bulletTime -= Time.deltaTime;
-        if (_bulletTime > 0) return;        
-        _bulletTime = _timer;
+    {       
 
-       var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
+        _bulletTime -= Time.deltaTime;
+        if (_bulletTime <= 0) 
+        {
+            _animator.Play("Attack1");
+
+            if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f) 
+            {                
+                _bulletTime = _timer;
+                var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
+            }
+            
+
+        };   
+
+       
        //bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
     }
 
