@@ -20,8 +20,7 @@ public class Ammo : MonoBehaviour
             if (enemy != null)
             {
                
-                enemy.takeDamage(damage);
-                StartCoroutine(enemy.GrowAndShrink());
+                enemy.takeDamage(damage);                
                
 
             }

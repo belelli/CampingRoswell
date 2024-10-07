@@ -44,7 +44,7 @@ public class Spider : Enemy
         }
         attack();
         rotateTowardsPlayer();
-        if (Input.GetKeyDown(KeyCode.E)) { takeDamage(1); }
+        if (Input.GetKey(KeyCode.E)) { takeDamage(1); }
     }
 
 
@@ -92,19 +92,24 @@ public class Spider : Enemy
 
     public override void attack()
     {
-        
-        if (Time.time >= lastAtk + atkCdw)
+        if (currentState != EnemyState.Death ) 
         {
-            lastAtk = Time.time;
-            animator.Play("Attack1");                        
+            if (Time.time >= lastAtk + atkCdw)
+            {
+                lastAtk = Time.time;
+                animator.Play("Attack1");
 
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
-            {                
-                var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
-                
-            }
-            
-        };
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
+                {
+                    var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
+
+                }
+
+            };
+
+            currentState = EnemyState.Attack;
+        }
+        
     }
 
     public override void ReturnToChase()
@@ -114,17 +119,21 @@ public class Spider : Enemy
 
     public override void takeDamage(int damage)
     {
+        animator.Play("TakeDamage");
         hp -= damage;
         animator.SetBool("IsDamaging", true);
-        StartCoroutine(GrowAndShrink());
+        //StartCoroutine(GrowAndShrink());
 
         if (hp <= 0)
-        {            
+        {
+            animator.Play("Death");
             currentState = EnemyState.Death;
-            animator.SetTrigger("Death"); // Activar la animación de muertes
             Instantiate(deathEnemyPart, transform.position, Quaternion.identity);
-            Destroy(gameObject, 2f);
+            animator.SetTrigger("Death"); // Activar la animación de muertes
             DropItem();
+            
+            Destroy(gameObject, 4.5f);
+            
         }
         else
         {
