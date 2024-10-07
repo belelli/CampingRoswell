@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Derrota.unity
     guid: 01f35cd02395efe4c9019e041223ed93
+  - enabled: 1
+    path: Assets/Scenes/Monday_scene.unity
+    guid: ae67d05464974654cbc39e8f95bb9b2a
   m_configObjects: {}
