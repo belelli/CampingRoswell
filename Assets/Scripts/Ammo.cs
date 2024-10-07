@@ -12,15 +12,20 @@ public class Ammo : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {
+        { 
+           
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            
 
             if (enemy != null)
             {
+               
                 enemy.takeDamage(damage);
                 StartCoroutine(enemy.GrowAndShrink());
-            }
+               
 
+            }
+           
             Destroy(gameObject, destroyTimer);
             Instantiate(ammoDeath, transform.position, Quaternion.identity);
             

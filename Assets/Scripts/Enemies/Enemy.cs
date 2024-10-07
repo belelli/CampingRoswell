@@ -15,7 +15,6 @@ public abstract class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     public GameObject deathEnemyPart;
     public GameObject itemToDrop;
-    /*public Vector3 CollCenter; Carl: deprecated variable*/
 
     public float growthDuration = 0.005f;
     public float growthFactor = 0.005f;
@@ -27,79 +26,56 @@ public abstract class Enemy : MonoBehaviour
     public float attackCooldown = 2f;
 
     private float lastAttackTime;
+    private Rigidbody _rb;
+    private bool hasDroppedItem = false; // Variable para controlar el drop del ítem
 
-    public virtual void chase() 
+    public enum EnemyState
     {
-        float distance = Vector3.Distance(playerPosition.position, transform.position);
-
-        if (distance <= detectionRange)
-        {
-            Vector3 direction = (playerPosition.position - transform.position).normalized;
-            transform.position += direction * speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
-            agent.SetDestination(playerPosition.position);
-            transform.LookAt(playerPosition);
-
-        }
-    }
-    
-
-    public virtual void attack() 
-    {
-        if (Vector3.Distance(transform.position, PlayerAtackWasp.instance.transform.position) < attackRange)
-        {
-            if (Time.time >= lastAttackTime + attackCooldown)
-            {
-                attack();
-                lastAttackTime = Time.time;
-            }
-        }
-
-
+        Idle,
+        Chase,
+        Attack,
+        Damage,
+        Death
     }
 
+    public EnemyState currentState = EnemyState.Idle;
+    public float chaseSpeed = 5f;
+    public int health = 100;
 
-    public virtual void takeDamage(int damage)
-    {
-        hp -= damage;
+    private Animator animator;
+    private Transform player;
 
-        GrowAndShrink();
-
-        if (hp <= 0)
-        {
-            
-            Destroy(gameObject);
-            Instantiate(deathEnemyPart, transform.position, Quaternion.identity);//Carl: cambié el collcenter por transform.position, funciona bien en la nueva avispa prefab con todo centrado digamos
-            DropItem();
-
-        }
-    }
-
-    public void DropItem()
-    {
-        GameObject itemDropped = Instantiate(itemToDrop, transform.position, Quaternion.identity);//Carl: idem linea 53
-    }
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); 
-        /*BoxCollider boxCollider = GetComponent<BoxCollider>();Carl: decrecated line*/
-        /*CollCenter = boxCollider.transform.TransformPoint(boxCollider.center); Carl: deprecated line*/
-        originalScale = transform.localScale;
+        _rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        
+        agent = GetComponent<NavMeshAgent>();
+        originalScale = transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        chase(); //Carlos: comenté las líneas viejas de navmesh, pruebo con este otro método que le agregué para perseguir
-       // DetectingPlayer();
+        switch (currentState)
+        {
+            case EnemyState.Idle:
+                Idle();
+                break;
+            case EnemyState.Chase:
+                chase();
+                break;
+            case EnemyState.Attack:
+                attack();
+                break;
+            case EnemyState.Damage:
+               
+                break;
+            case EnemyState.Death:
+               
+                break;
+        }
     }
-    
 
     public IEnumerator GrowAndShrink()
     {
@@ -126,5 +102,107 @@ public abstract class Enemy : MonoBehaviour
         transform.localScale = originalScale;
     }
 
+    void Idle()
+    {
+        animator.SetBool("IsIdle", true);
 
+        if (Vector3.Distance(transform.position, player.position) < 10f)
+        {
+            currentState = EnemyState.Chase;
+            animator.SetBool("IsIdle", false);
+            animator.SetBool("IsChasing", true);
+        }
+    }
+
+    public virtual void chase()
+    {
+        animator.SetBool("IsChasing", true);
+
+        float distance = Vector3.Distance(playerPosition.position, transform.position);
+
+        if (distance <= detectionRange)
+        {
+
+
+            Vector3 direction = (playerPosition.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+            agent.SetDestination(playerPosition.position);
+            transform.LookAt(playerPosition);
+
+
+
+            if (distance <= attackRange)
+            {
+                currentState = EnemyState.Attack;
+                animator.SetBool("IsChasing", false);
+                animator.SetBool("IsAttacking", true);
+            }
+        }
+        else
+        {
+            currentState = EnemyState.Idle;
+            animator.SetBool("IsChasing", false);
+            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsIdle", true);
+            
+            
+        }
+    }
+
+    public virtual void attack()
+    {
+        if (Time.time >= lastAttackTime + attackCooldown)
+        {
+            lastAttackTime = Time.time;
+            animator.SetBool("IsAttacking", false);
+            currentState = EnemyState.Chase; // Regresar a Chase después de atacar
+        }
+    }
+
+    public virtual void takeDamage(int damage)
+    {
+        hp -= damage;
+        animator.SetBool("IsDamaging", true);
+        StartCoroutine(GrowAndShrink());
+
+        if (hp <= 0)
+        {
+            Destroy(_rb);
+            currentState = EnemyState.Death;
+            animator.SetTrigger("Death"); // Activar la animación de muertes
+            Instantiate(deathEnemyPart, transform.position, Quaternion.identity);
+            Destroy(gameObject, 2f);
+            DropItem();
+        }
+        else
+        {
+
+            currentState = EnemyState.Damage; // Cambiar a estado de daño
+            Invoke("ReturnToChase", 0.5f); // Esperar para volver a Chase
+        }
+    }
+
+    public void DropItem()
+    {
+        if (!hasDroppedItem) 
+        {
+            GameObject itemDropped = Instantiate(itemToDrop, transform.position, Quaternion.identity);
+            hasDroppedItem = true; // Marcar que el ítem ha sido dropeado
+
+        }
+
+            
+    }
+
+    void ReturnToChase()
+    {
+        animator.SetBool("IsDamaging", false);
+
+        if (currentState != EnemyState.Death)
+        {
+
+            currentState = EnemyState.Chase;
+
+        }
+    }
 }

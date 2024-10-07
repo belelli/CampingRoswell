@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Wasp : Enemy
 {
-
+    private Animator animator;
     [SerializeField] AnimationCurve myCurve;
 
     private float lastAttackTime;
+
 
 
 
@@ -18,17 +19,21 @@ public class Wasp : Enemy
 
         if (Vector3.Distance(transform.position, PlayerAtackWasp.instance.transform.position) < attackRange)
         {
+
             if (Time.time >= lastAttackTime + attackCooldown)
             {
                 Attack();
                 lastAttackTime = Time.time;
+                
             }
         }
     }
 
     void Attack()
     {
+       
         PlayerAtackWasp.instance.TakeDamage(damage);
+
     }
 
     public void levitateAnim()
