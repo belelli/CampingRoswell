@@ -7,11 +7,16 @@ public class SpikyTrap : SpikeBase
     // Implementa el método Activate
     public override void Activate()
     {
-               Debug.Log("caiste ! ");
+               Debug.Log("caiste! ");
     }
 
-    public override void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        base.OnCollisionEnter(collision); 
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerHealth>().TakeDamage(10);
+
+
+        }
     }
 }
