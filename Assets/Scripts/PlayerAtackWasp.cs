@@ -45,7 +45,7 @@ public class PlayerAtackWasp : MonoBehaviour
     void Die()
     {
         Debug.Log("El jugador ha muerto.");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
 
 
     }

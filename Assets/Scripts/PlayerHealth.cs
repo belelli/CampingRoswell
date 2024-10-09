@@ -23,6 +23,6 @@ public class PlayerHealth : MonoBehaviour
     {
       
         Debug.Log("Player is dead!");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 }
