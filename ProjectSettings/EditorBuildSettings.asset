@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuInicial.unity
     guid: 411045ecebe36834186d1f5bedb94fe9
   - enabled: 1
+    path: Assets/Scenes/Prog2_scene.unity
+    guid: efad59ea73554c04289b2de8a662cdb1
+  - enabled: 1
     path: Assets/Scenes/Nico_Scene.unity
     guid: 1a16d125c62b0bd4881d55f316eb4159
   - enabled: 1
