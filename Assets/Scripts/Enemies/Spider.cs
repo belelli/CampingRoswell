@@ -44,31 +44,11 @@ public class Spider : Enemy
         }
         attack();
         rotateTowardsPlayer();
-        if (Input.GetKey(KeyCode.E)) { takeDamage(1); }
+        /* if (Input.GetKey(KeyCode.E)) { takeDamage(1); } Carlos: comento por que era de prueba */
     }
 
 
-
-    //void ShootAtPlayer()
-    //{
-
-    //    _bulletTime -= Time.deltaTime;
-    //    if (_bulletTime <= 0)
-    //    {
-    //        attack();
-
-    //        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
-    //        {
-    //            _bulletTime = _timer;
-    //            var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
-    //        }
-
-
-    //    };
-
-
-    //    //bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
-    //}
+    
 
     void rotateTowardsPlayer()
     {
