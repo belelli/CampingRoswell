@@ -14,7 +14,7 @@ public class SpikyTrap : SpikeBase
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(10);
+            other.GetComponent<PlayerAtackWasp>().TakeDamage(10);
 
 
         }

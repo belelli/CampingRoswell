@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wasp : Enemy
 {
-    private Animator animator;
+    private Animator _animator;
     [SerializeField] AnimationCurve myCurve;
 
     private float lastAttackTime;
