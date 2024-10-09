@@ -61,8 +61,8 @@ public class PlayerMovement : MonoBehaviour
         _direction.Normalize();
 
         //JUMP Controls
-        print("ready to jump" + readyToJump);
-        print("is grounded" + grounded);
+        // print("ready to jump" + readyToJump);
+        // print("is grounded" + grounded);
         if (Input.GetKey(KeyCode.Space) && readyToJump && grounded) {
             readyToJump = false;
             Jump();
