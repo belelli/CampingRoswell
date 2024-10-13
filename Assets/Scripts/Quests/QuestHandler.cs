@@ -20,11 +20,8 @@ public class QuestHandler : MonoBehaviour
                 if (quests[i].prefabTag == collision.rigidbody.tag)
                 {
                     quests[i].itemCollected();
-                    print("agarro algo en " + collision.gameObject.layer.ToString());
-                    print("i = " + i);
                 }
             }
-            print("entro al collission2223123");
             Destroy(collision.gameObject);
         }
     }

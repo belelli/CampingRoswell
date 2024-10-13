@@ -38,6 +38,10 @@ public class Quest
     public void itemCollected()
     {
         itemsCollected++;
+        if(itemsCollected== numberOfItemsToCollect)
+        {
+            Complete();
+        }
     }
 
 
