@@ -17,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float _rotateSpd = 1;
     public float fallMultiplier;
 
-    //quests
-    public Quest quest;
+
     //Ground check
     public float playerHeight;
     public bool grounded;
@@ -38,7 +37,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string _xAxisName;
     [SerializeField] private string _zAxisName;
 
-
+    //QUESTS
+    
 
     private void Awake()
     {
@@ -173,29 +173,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-
-    //ITEM COLLECTION
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Collectible")
-        {
-            print("entro al collision enter");
-            quest.goal.ItemCollected();
-            Destroy(collision.gameObject);
-            if (quest.goal.isReached())
-            {
-                quest.Complete();
-            }
-        }
-    }
-
-
-
-
-
-  
-
-
-
-
+ 
 }

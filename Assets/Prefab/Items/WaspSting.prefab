@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1529860747516511587}
   - component: {fileID: 4912607220187446327}
   - component: {fileID: 4040208291903625517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WaspSting
-  m_TagString: Collectible
+  m_TagString: WaspSting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
