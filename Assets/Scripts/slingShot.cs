@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SlingShot : MonoBehaviour
@@ -20,10 +21,13 @@ public class SlingShot : MonoBehaviour
     public float shootCd = 2f; //Carlos: agregando el cooldown de ataque
     private float lastShot;
 
+    Animator sAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         lastShot = -shootCd; //Carlos: setear el tiempo
+        sAnimator = transform.parent.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -48,6 +52,8 @@ public class SlingShot : MonoBehaviour
             projectileRigidBody.AddForce(transform.forward * shotForce, ForceMode.Impulse);
             slingshotString.CenterPoint = DrawFrom;
             lastShot = Time.time; //Carlos: cambia el tiempo del ultimo disparo
+
+            sAnimator.SetTrigger("Shoot");
 
             currentProjectile = null;
         }
