@@ -17,30 +17,42 @@ public class SlingShot : MonoBehaviour
 
     private bool draw;
    
+    public float shootCd = 2f; //Carlos: agregando el cooldown de ataque
+    private float lastShot;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        lastShot = -shootCd; //Carlos: setear el tiempo
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            DrawSlingShot(1);
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShot + shootCd)
+        { DrawSlingShot(1); }
         if (Input.GetKeyUp(KeyCode.Mouse0))
-            ReleaseAndShoot(50);
+        { ReleaseAndShoot(50); }
+
+            
     }
 
     public void ReleaseAndShoot(float shotForce)
     {
         draw = false;
-        currentProjectile.transform.parent = null;
-        Rigidbody projectileRigidBody = currentProjectile.GetComponent<Rigidbody>();
-        projectileRigidBody.isKinematic = false;
-        projectileRigidBody.AddForce(transform.forward * shotForce, ForceMode.Impulse);
-        slingshotString.CenterPoint = DrawFrom;
+        if (currentProjectile != null)
+        {
+            currentProjectile.transform.parent = null;
+            Rigidbody projectileRigidBody = currentProjectile.GetComponent<Rigidbody>();
+            projectileRigidBody.isKinematic = false;
+            projectileRigidBody.AddForce(transform.forward * shotForce, ForceMode.Impulse);
+            slingshotString.CenterPoint = DrawFrom;
+            lastShot = Time.time; //Carlos: cambia el tiempo del ultimo disparo
+
+            currentProjectile = null;
+        }
+              
+        
     }
 
     public void DrawSlingShot(float speed)
