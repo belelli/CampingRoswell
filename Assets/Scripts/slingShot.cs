@@ -53,7 +53,7 @@ public class SlingShot : MonoBehaviour
             slingshotString.CenterPoint = DrawFrom;
             lastShot = Time.time; //Carlos: cambia el tiempo del ultimo disparo
 
-            sAnimator.SetTrigger("Shoot");
+            sAnimator.SetBool("Shooting",false);
 
             currentProjectile = null;
         }
@@ -64,7 +64,9 @@ public class SlingShot : MonoBehaviour
     public void DrawSlingShot(float speed)
     {
         draw = true;
-        
+
+        sAnimator.SetBool("Shooting", true);
+
         currentProjectile = Instantiate(Projectile, spawnAmmo.position, Quaternion.identity, transform );
         currentProjectile.forward = transform.forward;
         slingshotString.CenterPoint = currentProjectile.transform;
