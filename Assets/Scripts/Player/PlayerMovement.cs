@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody _rb;
     CapsuleCollider _capsuleCollider;
     public float _rotateSpd = 1;
-    public float fallMultiplier;
+    
 
 
     //Ground check
@@ -30,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public float _jumpCoolDown;
     public float airMultiplier;
     bool readyToJump = true;
-    
+    public float fallMultiplier;
+
 
     //Variables para Animaciones
     Animator _animator;
@@ -168,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private bool isFalling(Rigidbody rb)
-    {
+    { 
         return (_rb.velocity.y < 0 && !grounded);
     }
 
