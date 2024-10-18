@@ -21,18 +21,22 @@ public class SlingShot : MonoBehaviour
     public float shootCd = 2f; //Carlos: agregando el cooldown de ataque
     private float lastShot;
 
+    public float speed = 2;
+
+    public GameObject _player;
     Animator sAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         lastShot = -shootCd; //Carlos: setear el tiempo
-        sAnimator = transform.parent.GetComponentInChildren<Animator>();
+        sAnimator = _player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //sAnimator.SetBool("Shooting", true);
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShot + shootCd)
         { DrawSlingShot(1); }
         if (Input.GetKeyUp(KeyCode.Mouse0))
