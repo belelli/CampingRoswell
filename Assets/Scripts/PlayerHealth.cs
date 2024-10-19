@@ -5,15 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 100;
+    [SerializeField] private HealthBar healthbar;
+    [SerializeField] private GameObject dieEffect;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private Transform player;
 
-    public void TakeDamage(int damage)
+    private float currentHealth;
+
+    void Start()
     {
-       
-        health -= damage;
+        currentHealth = maxHealth; // Inicializa la salud actual al máximo
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+    }
 
-       print("salud " +  health);
-        if (health <= 0)
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+
+        Debug.Log("Salud: " + currentHealth);
+
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -21,8 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-      
-        Debug.Log("Player is dead!");
-        SceneManager.LoadScene(3);
+        Debug.Log("¡El jugador ha muerto!");
+        SceneManager.LoadScene(3); // Cambia a la escena de muerte
     }
 }
