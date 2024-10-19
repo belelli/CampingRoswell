@@ -14,6 +14,19 @@ public class PlayerAtackWasp : MonoBehaviour
     private Material matt;
     private Color ogColor;
 
+    [SerializeField] private HealthBar healthbar;
+    [SerializeField] private GameObject dieEffect;
+    [SerializeField] private float maxHealth = 100f; // Valor máximo de vida
+    [SerializeField] private Transform player;
+
+    private float currentHealth; // Variable para la salud actual
+
+    void Start()
+    {
+        currentHealth = maxHealth; 
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -31,12 +44,15 @@ public class PlayerAtackWasp : MonoBehaviour
     }
 
     public void TakeDamage(int amount)
-    {
-        health -= amount;
-        Debug.Log("¡Has sido picado! Salud restante: " + health);
+    { 
+        currentHealth -= amount;
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        
+       
+        Debug.Log("¡Has sido picado! Salud restante: " + currentHealth);
         StartCoroutine(OnEmission());
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
