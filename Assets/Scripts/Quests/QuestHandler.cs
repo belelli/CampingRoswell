@@ -8,7 +8,7 @@ public class QuestHandler : MonoBehaviour
 {
     
     public Quest[] quests;
-    public int collectiblesLayer;//Specify in which layer the collectibles are
+    public int collectiblesLayer;//Specifies in which layer the collectibles are
 
     //Collect item
     private void OnCollisionEnter(Collision collision)
@@ -20,10 +20,9 @@ public class QuestHandler : MonoBehaviour
                 if (quests[i].prefabTag == collision.rigidbody.tag)
                 {
                     quests[i].itemCollected();
-                    print("2do if");
                 }
-                print("el de la quest" + quests[i].prefabTag);
-                print("el del prefab" + collision.rigidbody.tag);   
+                //print("el de la quest" + quests[i].prefabTag);
+                //print("el del prefab" + collision.rigidbody.tag);   
                 print(quests[i].prefabTag == collision.rigidbody.tag);
             }
             Destroy(collision.gameObject);
