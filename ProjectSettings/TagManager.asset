@@ -11,6 +11,7 @@ TagManager:
   - platform
   - WaspSting
   - SpiderSkull
+  - BlueApple
   layers:
   - Default
   - TransparentFX

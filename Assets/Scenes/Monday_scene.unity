@@ -89127,6 +89127,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5023827496289240853, guid: a79279818571b6848a9ccb8dcb36dd2c, type: 3}
   m_PrefabInstance: {fileID: 2028910735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2033485766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1086950650809972721, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_Name
+      value: Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086950650809972721, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_TagString
+      value: BlueApple
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -234.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.433
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 135.176
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383368395053571, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
 --- !u!1001 &2035812568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95398,6 +95459,18 @@ PrefabInstance:
       value: 0.418
       objectReference: {fileID: 0}
     - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].title
+      value: Manzanas Azules
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
       propertyPath: quests.Array.data[0].titleText
       value: 
       objectReference: {fileID: 1684681313610698601}
@@ -95406,6 +95479,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1684681313610698601}
     - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].prefabTag
+      value: BlueApple
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].titleText
+      value: 
+      objectReference: {fileID: 1684681313610698601}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].description
+      value: Conseguir una manzana azul
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].itemToCollect
+      value: 
+      objectReference: {fileID: 1086950650809972721, guid: 68a15afdfcef9764c94466470bcd6f42, type: 3}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
       propertyPath: quests.Array.data[0].QuestFinishWindow
       value: 
       objectReference: {fileID: 740224836781333755}
@@ -95413,6 +95502,14 @@ PrefabInstance:
       propertyPath: quests.Array.data[1].QuestFinishWindow
       value: 
       objectReference: {fileID: 740224836781333755}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].QuestFinishWindow
+      value: 
+      objectReference: {fileID: 740224836781333755}
+    - target: {fileID: 6517373503107425598, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
+      propertyPath: quests.Array.data[2].numberOfItemsToCollect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6615306614837728195, guid: 63944a95353e468498e8f0759f7a4f37, type: 3}
       propertyPath: _stopGame
       value: 
@@ -96086,3 +96183,4 @@ SceneRoots:
   - {fileID: 543450651651427874}
   - {fileID: 1387599436}
   - {fileID: 1466638823}
+  - {fileID: 2033485766}
