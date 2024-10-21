@@ -55,7 +55,7 @@ public class Inventary : MonoBehaviour
         {
             inventory.SetActive(false);
             _pauseMove.GetComponent<PlayerMovement>().enabled = true;
-            _pauseMove.GetComponentInChildren<SlingShot>().enabled = true;
+            _pauseMove.GetComponentInChildren<PlayerAttack>().enabled = true;
         }
 
         

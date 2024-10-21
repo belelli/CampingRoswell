@@ -257,7 +257,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8427840711725357931}
-  - component: {fileID: 1525558301118264039}
   m_Layer: 0
   m_Name: SlingShot 1
   m_TagString: Untagged
@@ -284,24 +283,6 @@ Transform:
   - {fileID: 5563254058985254813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 1.995, z: -40.586}
---- !u!114 &1525558301118264039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6705207229222416001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0c0bb70701049cd976b7f8030e40e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Projectile: {fileID: 1810075724241738199, guid: 8c0fd69dcf4bc4ef4b74eacb2aefd3d0, type: 3}
-  DrawFrom: {fileID: 7994728258503175308}
-  DrawTo: {fileID: 5563254058985254813}
-  spawnAmmo: {fileID: 0}
-  slingshotString: {fileID: 7698880281779500909}
-  NrDrawIncrements: 10
 --- !u!1 &7290492419375728011
 GameObject:
   m_ObjectHideFlags: 0
