@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1209145433494329362}
   - component: {fileID: 8101702248706462600}
   - component: {fileID: 4753644869751973100}
+  - component: {fileID: 8413633610764180470}
   m_Layer: 0
   m_Name: Item
   m_TagString: item
@@ -30,9 +31,9 @@ Transform:
   m_GameObject: {fileID: 8560813193981172873}
   serializedVersion: 2
   m_LocalRotation: {x: -0.1844035, y: -0, z: -0, w: 0.9828506}
-  m_LocalPosition: {x: 116.89, y: 1.38, z: 131.14}
-  m_LocalScale: {x: 0.0376, y: 1, z: 0.0191}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -242.12999, y: 2.93, z: 134.26999}
+  m_LocalScale: {x: 0.68, y: 0.024460435, z: 0.48920867}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -21.253, y: 0, z: 0}
@@ -43,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8560813193981172873}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &4779619293202708892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +60,8 @@ MonoBehaviour:
   ID: 0
   type: Carta
   description: 'Esto es solo una carta '
+  letterName: 
+  isLetter: 0
   icon: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
   pickedUp: 0
   equipped: 0
@@ -147,3 +150,49 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.2204459e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8413633610764180470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560813193981172873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1c12c3557bdd34da389045b46578cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0019157085
+      value: -0.0023584906
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.49808425
+      value: 1.009434
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9999999
+      value: 0.007075472
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  rotateSpeed: 4
