@@ -31,7 +31,8 @@ public class QuestHandler : MonoBehaviour
             Item item = itempickUp.GetComponent<Item>();
 
             inventary.AddItem(itempickUp, item.ID, item.type, item.description, item.icon, item.letterName);
-            print("agarro la manzana");
+            //print("agarro el aguijon");
+            print("el objeto es  " + item.description);
             Destroy(collision.gameObject);
             
         }
