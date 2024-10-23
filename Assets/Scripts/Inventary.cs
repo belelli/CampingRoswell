@@ -13,6 +13,9 @@ public class Inventary : MonoBehaviour
     public GameObject slotHolder;    
     public pauseGame _stopGame;
     public GameObject _pauseMove;
+    public int collectiblesLayer;//Specifies in which layer the collectibles are
+    
+    
 
 
     void Start()
@@ -64,7 +67,7 @@ public class Inventary : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "item") 
+        if (other.GetComponent<Item>() != null)
         {
             GameObject itempickUp = other.gameObject;
             Item item = itempickUp.GetComponent<Item>();
@@ -74,6 +77,9 @@ public class Inventary : MonoBehaviour
 
         }
     }
+
+
+
 
     public void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
     {

@@ -9,6 +9,7 @@ public class QuestHandler : MonoBehaviour
     
     public Quest[] quests;
     public int collectiblesLayer;//Specifies in which layer the collectibles are
+    public Inventary inventary;
 
     //Collect item
     private void OnCollisionEnter(Collision collision)
@@ -25,6 +26,12 @@ public class QuestHandler : MonoBehaviour
                 //print("el del prefab" + collision.rigidbody.tag);   
                 print(quests[i].prefabTag == collision.rigidbody.tag);
             }
+
+            GameObject itempickUp = collision.rigidbody.gameObject;
+            Item item = itempickUp.GetComponent<Item>();
+
+            inventary.AddItem(itempickUp, item.ID, item.type, item.description, item.icon, item.letterName);
+            print("agarro la manzana");
             Destroy(collision.gameObject);
             
         }

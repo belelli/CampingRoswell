@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2343383368395053571}
   - component: {fileID: 8342945849640628664}
   - component: {fileID: 5760591334716426982}
+  - component: {fileID: 7274314902326983483}
   m_Layer: 7
   m_Name: Apple
   m_TagString: BlueApple
@@ -58,7 +59,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -84,6 +85,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5694685, y: 0.50967264, z: 0.54733384}
   m_Center: {x: -0.002989769, y: 0.24516368, z: 0.010856092}
+--- !u!114 &7274314902326983483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086950650809972721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72b7a18beac909438a8a18f0a50aad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  type: Collectible
+  description: Blue Apple
+  letterName: 
+  isLetter: 0
+  icon: {fileID: 21300000, guid: f95b697c14436a848836ec8c78f44cea, type: 3}
+  pickedUp: 0
+  equipped: 0
 --- !u!1 &1923738621949467326
 GameObject:
   m_ObjectHideFlags: 0
