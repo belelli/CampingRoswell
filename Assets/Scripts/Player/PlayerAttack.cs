@@ -18,12 +18,15 @@ public class PlayerAttack : MonoBehaviour
 
     
     Animator sAnimator;
+    public PlayerAtackWasp _death;
 
+   
     // Start is called before the first frame update
     void Start()
     {
         lastShot = -shootCd; //Carlos: setear el tiempo
         sAnimator = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -43,5 +46,16 @@ public class PlayerAttack : MonoBehaviour
 
         sAnimator.SetBool("Shooting", false);
 
+    }
+
+    public void stuntOff() 
+    { 
+        sAnimator.SetBool("Stunt", false);
+        Debug.Log("FALSO");
+    }
+
+    public void deathOn() 
+    {
+        _death.Die();
     }
 }

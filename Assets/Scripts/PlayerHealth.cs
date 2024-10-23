@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,9 +12,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Transform player;
 
     private float currentHealth;
-
+    Animator sAnimator;
+    
     void Start()
     {
+        sAnimator = GetComponentInChildren<Animator>();
         currentHealth = maxHealth; // Inicializa la salud actual al máximo
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
@@ -22,16 +25,20 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        sAnimator.SetBool("Stunt",true);
+
 
         Debug.Log("Salud: " + currentHealth);
 
         if (currentHealth <= 0)
         {
-            Die();
+
+            sAnimator.SetTrigger("Death");
+            
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("¡El jugador ha muerto!");
         SceneManager.LoadScene(3); // Cambia a la escena de muerte

@@ -8,11 +8,7 @@ public class PlayerAtackWasp : MonoBehaviour
     public static PlayerAtackWasp instance; 
     public int health = 100;
 
-    MeshRenderer meshh;
-    public Color emissionColor = Color.red;
-    public float effectDur = 1.0f;
-    private Material matt;
-    private Color ogColor;
+    
 
     [SerializeField] private HealthBar healthbar;
     [SerializeField] private GameObject dieEffect;
@@ -21,44 +17,40 @@ public class PlayerAtackWasp : MonoBehaviour
 
     private float currentHealth; // Variable para la salud actual
 
+    Animator sAnimator;
+
+    public GameObject _spider; //para llamar al script de la araña
+    CapsuleCollider _cc;
     void Start()
     {
         currentHealth = maxHealth; 
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        sAnimator = GetComponentInChildren<Animator>();
+        _cc = GetComponent<CapsuleCollider>();
     }
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            meshh = GetComponent<MeshRenderer>();
-            matt = meshh.material;
-            ogColor = matt.GetColor("_EmmisionColor");
-
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
     public void TakeDamage(int amount)
     { 
         currentHealth -= amount;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
-        
-       
+        sAnimator.SetBool("Stunt", true);
+
+
         Debug.Log("¡Has sido picado! Salud restante: " + currentHealth);
-        StartCoroutine(OnEmission());
+        
 
         if (currentHealth <= 0)
         {
-            Die();
+            _spider.GetComponent<Spider>().enabled = false;//entro en el script de la araña y la desactivo para que no siga disparando
+            Debug.Log("IDLE");//debuggear que ande
+            _cc.isTrigger = true;
+            sAnimator.SetTrigger("Death");
         }
     }
 
-    void Die()
+    public void Die()
     {
         Debug.Log("El jugador ha muerto.");
         SceneManager.LoadScene(3);
@@ -66,15 +58,5 @@ public class PlayerAtackWasp : MonoBehaviour
 
     }
 
-    private IEnumerator OnEmission() 
-    {
-        matt.SetColor("_EmissionColor", emissionColor);
-        DynamicGI.SetEmissive(meshh, emissionColor);
-
-        yield return new WaitForSeconds(effectDur);
-
-        matt.SetColor("_EmissionColor", ogColor);
-        DynamicGI.SetEmissive(meshh, ogColor);
-
-    }
+    
 }

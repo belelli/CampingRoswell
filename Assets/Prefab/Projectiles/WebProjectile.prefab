@@ -182,7 +182,7 @@ MonoBehaviour:
   _destroyTime: 4
   _speed: 20
   player: {fileID: 0}
-  damageAmmo: 5
+  damageAmmo: 25
 --- !u!135 &-1181909375807502590
 SphereCollider:
   m_ObjectHideFlags: 0
