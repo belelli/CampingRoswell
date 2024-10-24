@@ -29,11 +29,12 @@ public class QuestHandler : MonoBehaviour
 
             GameObject itempickUp = collision.rigidbody.gameObject;
             Item item = itempickUp.GetComponent<Item>();
-
+           
+            Destroy(collision.gameObject);
             inventary.AddItem(itempickUp, item.ID, item.type, item.description, item.icon, item.letterName);
             //print("agarro el aguijon");
             print("el objeto es  " + item.description);
-            Destroy(collision.gameObject);
+            
             
         }
     }
