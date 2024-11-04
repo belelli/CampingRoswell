@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
 
     
     Animator sAnimator;
-    public PlayerAtackWasp _death;
+    
 
    
     // Start is called before the first frame update
@@ -56,6 +56,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void deathOn() 
     {
-        _death.Die();
+        PlayerAtackWasp.Die();
     }
 }

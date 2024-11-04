@@ -17,7 +17,7 @@ public class Spider : Enemy
     //pa girar
     public float turnSpeed;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -72,7 +72,7 @@ public class Spider : Enemy
 
     public override void attack()
     {
-        if (currentState != EnemyState.Death ) 
+        if (currentState != EnemyState.Death && PlayerAtackWasp.currentHealth >= 1 ) //Carlos: agrego como condición que la vida del player sea mayor a 1 para atacarlo
         {
             if (Time.time >= lastAtk + atkCdw)
             {
@@ -89,7 +89,8 @@ public class Spider : Enemy
 
             currentState = EnemyState.Attack;
         }
-        
+        else { currentState = EnemyState.Idle; } //Carlos: agrego que si el player tiene 0 hp, el state sea idle
+
     }
 
     public override void ReturnToChase()

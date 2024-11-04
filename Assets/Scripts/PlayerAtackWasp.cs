@@ -15,18 +15,18 @@ public class PlayerAtackWasp : MonoBehaviour
     [SerializeField] private float maxHealth = 100f; // Valor máximo de vida
     [SerializeField] private Transform player;
 
-    private float currentHealth; // Variable para la salud actual
+    public static float currentHealth; // Variable para la salud actual - Carlos: lo cambié a publico y static para acceder a este valor desde todo lado
 
     Animator sAnimator;
 
-    public GameObject _spider; //para llamar al script de la araña
-    CapsuleCollider _cc;
+    Enemy enemy; //Carlos: para acceder al script de enemigo y que cambie el state
+    
     void Start()
     {
         currentHealth = maxHealth; 
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
         sAnimator = GetComponentInChildren<Animator>();
-        _cc = GetComponent<CapsuleCollider>();
+        
     }
 
     
@@ -43,14 +43,15 @@ public class PlayerAtackWasp : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            _spider.GetComponent<Spider>().enabled = false;//entro en el script de la araña y la desactivo para que no siga disparando
-            Debug.Log("IDLE");//debuggear que ande
-            _cc.isTrigger = true;
             sAnimator.SetTrigger("Death");
+            enemy.currentState = Enemy.EnemyState.Idle; //Carlos: entro al script y le digo que cambie a idle
+            Debug.Log("IDLE");//debuggear que ande
+            
+            
         }
     }
 
-    public void Die()
+    public static void Die() //Carlos: cambié a static para llamarlo desde otro script
     {
         Debug.Log("El jugador ha muerto.");
         SceneManager.LoadScene(3);
