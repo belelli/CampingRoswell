@@ -18,10 +18,12 @@ public class Shrine : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //print("Entro el Player!!!");
-
-            shrineCanvas.SetActive(true);
-            //items.SetActive(true);
+           
+            if (!items.activeSelf)
+            {
+                shrineCanvas.SetActive(true);
+            }
+            
         }
     }
 
