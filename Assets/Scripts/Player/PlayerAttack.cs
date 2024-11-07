@@ -58,4 +58,9 @@ public class PlayerAttack : MonoBehaviour
     {
         PlayerAtackWasp.Die();
     }
+
+    void runSfx()
+    {
+        SfxManager.PlaySFXClip(SoundType.SLING);
+    }
 }

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8103731263182777619}
   - component: {fileID: 4245667422789772502}
   - component: {fileID: 6517373503107425598}
+  - component: {fileID: 1746292200332192861}
   m_Layer: 0
   m_Name: Dorian 2.0
   m_TagString: Player
@@ -136,6 +137,7 @@ MonoBehaviour:
   slotHolder: {fileID: 0}
   _stopGame: {fileID: 0}
   _pauseMove: {fileID: 1215636850651623790}
+  collectiblesLayer: 0
 --- !u!114 &3582238315717005399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,8 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  emissionColor: {r: 1, g: 0, b: 0, a: 1}
-  effectDur: 1
   healthbar: {fileID: 0}
   dieEffect: {fileID: 0}
   maxHealth: 100
@@ -245,6 +245,15 @@ MonoBehaviour:
     itemToCollect: {fileID: 7144633163062545229, guid: a2d508d7f54d0d94a9dbb1f5f1480e6b, type: 3}
     prefabTag: SpiderSkull
   collectiblesLayer: 7
+  inventary: {fileID: 0}
+--- !u!81 &1746292200332192861
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215636850651623790}
+  m_Enabled: 1
 --- !u!1 &2392912947146230223
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +340,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2627100481253216284}
   - component: {fileID: 5500321025300399102}
-  - component: {fileID: 4054670402611256138}
   - component: {fileID: 3401571252394083617}
   m_Layer: 0
   m_Name: Main Camera (1)
@@ -406,14 +414,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4054670402611256138
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744066949473031014}
-  m_Enabled: 1
 --- !u!114 &3401571252394083617
 MonoBehaviour:
   m_ObjectHideFlags: 0

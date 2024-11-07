@@ -173,6 +173,10 @@ public class PlayerMovement : MonoBehaviour
         return (_rb.velocity.y < 0 && !grounded);
     }
 
+    void runSfx() 
+    {
+        SfxManager.PlaySFXClip(SoundType.STEPGRASS);
+    }
 
  
 }
