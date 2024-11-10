@@ -2,53 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SoundType 
-{
-    SLING,
-    SPIDERIDLE,
-    SPIDERATK,
-    SPIDERDEATH,
-    WASPFLY,
-    WASPDEATH,
-    STEPGRASS
-}
-
-
 
 public class SfxManager : MonoBehaviour
 {
     public static SfxManager instance;
 
-    [SerializeField] public AudioSource _sfxObj;
-    [SerializeField] private AudioClip[] soundlist;
-    [SerializeField] public float volume = 1.0f;
+    public List<AudioClip> soundClips;
 
-    private void Awake()
+
+    public void PlaySound(int index) 
     {
-        instance = this;
-        
+        if (index >= 0 && index < soundClips.Count)
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            AudioSource audioSource1 = GetComponentInParent<AudioSource>();
+            AudioSource audioSource2 = GetComponentInChildren<AudioSource>();
+
+            if (audioSource != null)
+            {
+                audioSource.clip = soundClips[index];
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.LogError("Audiosource no se encontró");
+            }
+        }
+        else 
+        {
+            Debug.LogError("Clip inválido");
+        }
     }
 
-
-    public static void PlaySFXClip(SoundType sound, float volume = 1) 
-    {
-         
-        instance._sfxObj.PlayOneShot(instance.soundlist[(int)sound],volume);
-        
-
-
-
-
-        //AudioSource audioSource = Instantiate(_sfxObj, spawnPoint.position, Quaternion.identity);
-
-        //audioSource.clip = ;  
-
-        //audioSource.volume = volume;
-
-        //audioSource.Play(instance.soundlist[(int)sound]);
-
-        //float clipLength = audioSource.clip.length;
-
-        //Destroy(audioSource.gameObject, clipLength);
-    }
 }

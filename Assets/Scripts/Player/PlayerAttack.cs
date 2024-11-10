@@ -18,15 +18,15 @@ public class PlayerAttack : MonoBehaviour
 
     
     Animator sAnimator;
-    
-
+    AudioSource audioSource;
    
     // Start is called before the first frame update
     void Start()
     {
         lastShot = -shootCd; //Carlos: setear el tiempo
         sAnimator = GetComponentInChildren<Animator>();
-        
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -61,6 +61,7 @@ public class PlayerAttack : MonoBehaviour
 
     void runSfx()
     {
-        SfxManager.PlaySFXClip(SoundType.SLING);
+        audioSource.Play();       
+
     }
 }

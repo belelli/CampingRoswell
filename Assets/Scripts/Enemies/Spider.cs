@@ -16,11 +16,13 @@ public class Spider : Enemy
 
     //pa girar
     public float turnSpeed;
-
+    //
+    SpiderSFX spiderSfx;
+    AudioSource audioSource;
     
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -72,12 +74,16 @@ public class Spider : Enemy
 
     public override void attack()
     {
+        audioSource = GetComponent<AudioSource>();
         if (currentState != EnemyState.Death && PlayerAtackWasp.currentHealth >= 1 ) //Carlos: agrego como condición que la vida del player sea mayor a 1 para atacarlo
         {
             if (Time.time >= lastAtk + atkCdw)
             {
                 lastAtk = Time.time;
                 animator.Play("Attack1");
+                audioSource.clip = spiderSfx.soundClips[0];
+                audioSource.Play();
+                
 
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
                 {

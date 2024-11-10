@@ -39,13 +39,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string _zAxisName;
 
     //QUESTS
-    
+
+    //SFX
+    [Header("SFX")]
+    AudioSource audioSource;
+    public float minPlaySpd = 5f;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _animator = GetComponentInChildren<Animator>(); 
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = true;
     }
 
 
@@ -54,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //MOVEMENT Controls
-        _verticalAxis = Input.GetAxis("Vertical");
-        _horizontalAxis = Input.GetAxis("Horizontal");
+        _verticalAxis = Input.GetAxisRaw("Vertical");
+        _horizontalAxis = Input.GetAxisRaw("Horizontal");
         Vector3 forwardDirection = transform.forward * _verticalAxis;
         Vector3 rightDirection = transform.right * _horizontalAxis;
         _direction = forwardDirection + rightDirection;
@@ -116,6 +122,23 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetBool("isFalling", false);
         }
 
+        //SFX Chequeo de velocidad y disparo de sonido
+        float spd = GetComponent<Rigidbody>().velocity.magnitude;
+        if (spd >= minPlaySpd) 
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            
+        }
+        else
+        {
+            if (audioSource.isPlaying) 
+            {
+                audioSource.Stop();
+            }
+        }
 
     }
 
@@ -140,10 +163,13 @@ public class PlayerMovement : MonoBehaviour
             if (grounded)
             {
                 _rb.AddForce(_speed * _direction * 10f, ForceMode.Force);
+                
+
             }
             else
             {
                 _rb.AddForce(_speed * _direction * 10f * airMultiplier, ForceMode.Force);
+                
             }
         }
     }
@@ -173,10 +199,7 @@ public class PlayerMovement : MonoBehaviour
         return (_rb.velocity.y < 0 && !grounded);
     }
 
-    void runSfx() 
-    {
-        SfxManager.PlaySFXClip(SoundType.STEPGRASS);
-    }
+    
 
  
 }
