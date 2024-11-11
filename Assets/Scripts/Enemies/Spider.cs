@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spider : Enemy
 {
-    
+
     public Transform spawnPoint;
     public float bulletSpeed;
     public GameObject enemyBullet;
@@ -19,10 +19,11 @@ public class Spider : Enemy
     //
     SpiderSFX spiderSfx;
     AudioSource audioSource;
-    
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        spiderSfx = GetComponent<SpiderSFX>();
     }
 
 
@@ -33,7 +34,7 @@ public class Spider : Enemy
         {
             case EnemyState.Idle:
                 Idle();
-                break;            
+                break;
             case EnemyState.Attack:
                 attack();
                 break;
@@ -50,7 +51,7 @@ public class Spider : Enemy
     }
 
 
-    
+
 
     void rotateTowardsPlayer()
     {
@@ -75,23 +76,33 @@ public class Spider : Enemy
     public override void attack()
     {
         audioSource = GetComponent<AudioSource>();
-        if (currentState != EnemyState.Death && PlayerAtackWasp.currentHealth >= 1 ) //Carlos: agrego como condición que la vida del player sea mayor a 1 para atacarlo
+        if (currentState != EnemyState.Death && PlayerAtackWasp.currentHealth >= 1) //Carlos: agrego como condición que la vida del player sea mayor a 1 para atacarlo
         {
             if (Time.time >= lastAtk + atkCdw)
             {
                 lastAtk = Time.time;
                 animator.Play("Attack1");
-                audioSource.clip = spiderSfx.soundClips[0];
-                audioSource.Play();
-                
 
+                if (spiderSfx != null && spiderSfx.soundClips.Count > 0)
+                {
+                    audioSource.clip = spiderSfx.soundClips[0];  // Facu: Asigno el clip de audio del ataque
+                    audioSource.Play(); // Facu: Reproduce el sonido
+                }
+                else
+                {
+                    
+                }
+
+
+                // Facu : Instancio la bala 
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
                 {
                     var bullet = Instantiate(enemyBullet, spawnPoint.position, spawnPoint.rotation);
-
                 }
 
-            };
+                currentState = EnemyState.Attack;
+
+            }
 
             currentState = EnemyState.Attack;
         }
@@ -118,18 +129,19 @@ public class Spider : Enemy
             Instantiate(deathEnemyPart, transform.position, Quaternion.identity);
             animator.SetTrigger("Death"); // Activar la animación de muertes
             DropItem();
-            
+
             Destroy(gameObject, 4.5f);
-            
+
         }
         else
         {
 
             currentState = EnemyState.Damage; // Cambiar a estado de daño
-            
+
         }
     }
 
 
 
 }
+
