@@ -77,30 +77,30 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public IEnumerator GrowAndShrink()
-    {
-        Vector3 grownScale = originalScale * growthFactor;
+    //public IEnumerator GrowAndShrink()
+    //{
+    //    Vector3 grownScale = originalScale * growthFactor;
 
-        // Grow
-        float elapsedTime = 0f;
-        while (elapsedTime < growthDuration)
-        {
-            transform.localScale = Vector3.Lerp(originalScale, grownScale, elapsedTime / growthDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //    // Grow
+    //    float elapsedTime = 0f;
+    //    while (elapsedTime < growthDuration)
+    //    {
+    //        transform.localScale = Vector3.Lerp(originalScale, grownScale, elapsedTime / growthDuration);
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        // Shrink
-        elapsedTime = 0f;
-        while (elapsedTime < growthDuration)
-        {
-            transform.localScale = Vector3.Lerp(grownScale, originalScale, elapsedTime / growthDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //    // Shrink
+    //    elapsedTime = 0f;
+    //    while (elapsedTime < growthDuration)
+    //    {
+    //        transform.localScale = Vector3.Lerp(grownScale, originalScale, elapsedTime / growthDuration);
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        transform.localScale = originalScale;
-    }
+    //    transform.localScale = originalScale;
+    //}
 
     public virtual void Idle() //estaba en solo void, lo pasé a virtual para poder overridear en la araña
     {
@@ -154,7 +154,7 @@ public abstract class Enemy : MonoBehaviour
         if (Time.time >= lastAttackTime + attackCooldown)
         {
             lastAttackTime = Time.time;
-            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsAttacking", false);            
             currentState = EnemyState.Chase; // Regresar a Chase después de atacar
         }
     }
@@ -163,7 +163,7 @@ public abstract class Enemy : MonoBehaviour
     {
         hp -= damage;
         animator.SetBool("IsDamaging", true);
-        StartCoroutine(GrowAndShrink());
+        //StartCoroutine(GrowAndShrink());
 
         if (hp <= 0)
         {

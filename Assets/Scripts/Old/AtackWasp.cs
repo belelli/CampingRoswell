@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class AtackWasp : MonoBehaviour
 {
-    public int damage = 10; 
-    public float attackRange = 5f; 
-    public float attackCooldown = 2f; 
+    /* COMENTO TODO ESTO POR QUE NO SE A QUE OBJECTO PERTENECE, LAS WASPS NO LO USAN*/
 
-    private float lastAttackTime;
+    //public int damage = 10;    
+    //public float attackRange = 5f; 
+    //public float attackCooldown = 2f; 
 
-    void Update()
-    {
-        if (Vector3.Distance(transform.position, PlayerAtackWasp.instance.transform.position) < attackRange)
-        {
-            if (Time.time >= lastAttackTime + attackCooldown)
-            {
-                Attack();
-                lastAttackTime = Time.time;
-            }
-        }
-    }
+    //private float lastAttackTime;
 
-    void Attack()
-    {
-        PlayerAtackWasp.instance.TakeDamage(damage);
-    }
+    //void Update()
+    //{
+    //    if (Vector3.Distance(transform.position, PlayerAtackWasp.instance.transform.position) < attackRange)
+    //    {
+    //        if (Time.time >= lastAttackTime + attackCooldown)
+    //        {
+    //            Attack();
+    //            lastAttackTime = Time.time;
+    //        }
+    //    }
+    //}
+
+    //void Attack()
+    //{
+    //    PlayerAtackWasp.TakeDamage(damage);
+    //}
 }

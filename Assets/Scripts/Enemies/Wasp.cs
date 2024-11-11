@@ -9,38 +9,49 @@ public class Wasp : Enemy
 
     private float lastAttackTime;
 
+    public PlayerAtackWasp players;
 
-
+    
+    
 
     public void Update()
     {
         chase();
 
 
-        if (Vector3.Distance(transform.position, PlayerAtackWasp.instance.transform.position) < attackRange)
+        if (Vector3.Distance(transform.position, playerPosition.transform.position) < attackRange)
         {
 
             if (Time.time >= lastAttackTime + attackCooldown)
             {
-                Attack();
+                attack();
                 lastAttackTime = Time.time;
                 
             }
         }
     }
 
-    void Attack()
+    public override void attack()
     {
-       
-        PlayerAtackWasp.instance.TakeDamage(damage);
+        if (PlayerAtackWasp.currentHealth >= 1) 
+        { 
+            if (Time.time >= lastAttackTime + attackCooldown)
+            {
+                lastAttackTime = Time.time;
+                players.TakeDamage(damage);
+                animator.SetBool("IsAttacking", false);
+                currentState = EnemyState.Chase; // Regresar a Chase después de atacar
+            }
 
+        }
+        else { currentState = EnemyState.Idle; }
     }
 
-    public void levitateAnim()
+    /*public void levitateAnim()
     {        
        
         transform.position = new Vector3(transform.position.x, myCurve.Evaluate((Time.time % myCurve.length)), transform.position.z);
 
-    }
+    }*/
 
 }

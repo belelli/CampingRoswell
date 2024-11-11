@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAtackWasp : MonoBehaviour
 {
-    public static PlayerAtackWasp instance; 
-    public int health = 100;
+    //public static PlayerAtackWasp instance; 
+    public float health = 100;
 
     
 
@@ -34,6 +34,7 @@ public class PlayerAtackWasp : MonoBehaviour
     public void TakeDamage(int amount)
     { 
         currentHealth -= amount;
+        health = currentHealth;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
         sAnimator.SetBool("Stunt", true);
 
