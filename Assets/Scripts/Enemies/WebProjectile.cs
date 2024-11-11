@@ -22,6 +22,7 @@ public class WebProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(0, 90 * Time.deltaTime, 0); // facu: trate de que salga derecho el tiro !
         Destroy(gameObject, _destroyTime);
     }
 
