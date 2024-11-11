@@ -10,6 +10,21 @@ public class QuestHandler : MonoBehaviour
     public Quest[] quests;
     public int collectiblesLayer;//Specifies in which layer the collectibles are
     public Inventary inventary;
+    public GameObject letters;
+    [SerializeField] GameObject[] lettersArray;
+
+    private void Start()
+    {
+        //GENERA EL ARRAY DE LETTERS
+        lettersArray = new GameObject[letters.transform.childCount];
+        for (int i = 0; i < lettersArray.Length; i++)
+        {
+            lettersArray[i] = letters.transform.GetChild(i).gameObject;
+        }
+        /////////////////////////
+        ///
+
+    }
 
     //Collect item
     private void OnCollisionEnter(Collision collision)
@@ -21,6 +36,11 @@ public class QuestHandler : MonoBehaviour
                 if (quests[i].prefabTag == collision.rigidbody.tag)
                 {
                     quests[i].itemCollected();
+                    if (quests[i].isDone == true)
+                    {
+                        enableLetter(quests[i].letterToDropId);
+                        
+                    }
                 }
                 //print("el de la quest" + quests[i].prefabTag);
                 //print("el del prefab" + collision.rigidbody.tag);   
@@ -32,12 +52,26 @@ public class QuestHandler : MonoBehaviour
            
             Destroy(collision.gameObject);
             inventary.AddItem(itempickUp, item.ID, item.type, item.description, item.icon, item.letterName);
-            //print("agarro el aguijon");
-            print("el objeto es  " + item.description);
+            
+            
             
             
         }
     }
+
+    void enableLetter(int letterToDropId)
+    {
+        for (int i = 0; i < lettersArray.Length; i++)
+        {
+            var itemId = lettersArray[i].GetComponent<Item>().ID;
+            if (itemId == letterToDropId)
+            {
+                lettersArray[i].SetActive(true);
+            }
+        }
+    }
+
+
 
 
 
