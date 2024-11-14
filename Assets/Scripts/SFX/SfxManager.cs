@@ -9,14 +9,18 @@ public class SfxManager : MonoBehaviour
 
     public List<AudioClip> soundClips;
 
-
-    public void PlaySound(int index) 
+    private void Awake()
     {
-        if (index >= 0 && index < soundClips.Count)
-        {
-            AudioSource audioSource = GetComponent<AudioSource>();
-            AudioSource audioSource1 = GetComponentInParent<AudioSource>();
-            AudioSource audioSource2 = GetComponentInChildren<AudioSource>();
+        instance = this;
+
+    }
+
+
+
+    public void PlaySound(int index, AudioSource audioSource) 
+    {
+        if (index >= 0 && index < soundClips.Count)        {
+                      
 
             if (audioSource != null)
             {

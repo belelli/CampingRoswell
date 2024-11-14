@@ -865,7 +865,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008157b906e1f274c8c3b9bd42fc0800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundClips: []
+  soundClips:
+  - {fileID: 8300000, guid: 026260c9da3ac4d4a93d9bf2c7feccd1, type: 3}
+  - {fileID: 8300000, guid: 6bd9b77169926b748bac73befc54c8e3, type: 3}
+  - {fileID: 8300000, guid: 7e17e5bfad0ec3947b68f8b39e5e88d0, type: 3}
+  audiosource: {fileID: 3117834601144558661}
 --- !u!1 &2628881453117679005
 GameObject:
   m_ObjectHideFlags: 0

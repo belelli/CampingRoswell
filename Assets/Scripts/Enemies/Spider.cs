@@ -120,11 +120,15 @@ public class Spider : Enemy
         animator.Play("TakeDamage");
         hp -= damage;
         animator.SetBool("IsDamaging", true);
+        audioSource.clip = spiderSfx.soundClips[2];
+        audioSource.Play();
         //StartCoroutine(GrowAndShrink());
 
         if (hp <= 0)
         {
             animator.Play("Death");
+            audioSource.clip = spiderSfx.soundClips[1];  // Facu: Asigno el clip de audio del ataque
+            audioSource.Play();
             currentState = EnemyState.Death;
             Instantiate(deathEnemyPart, transform.position, Quaternion.identity);
             animator.SetTrigger("Death"); // Activar la animación de muertes

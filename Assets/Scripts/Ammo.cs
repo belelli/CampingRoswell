@@ -10,8 +10,8 @@ public class Ammo : MonoBehaviour
     public GameObject ammoDeath;
     public Rigidbody _rb;
     public float force;
-    
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)    
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.layer == 6)
         { 
