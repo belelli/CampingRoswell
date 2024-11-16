@@ -134,7 +134,7 @@ public class Spider : Enemy
             animator.SetTrigger("Death"); // Activar la animación de muertes
             DropItem();
 
-            Destroy(gameObject, 4.5f);
+            Destroy(gameObject, 0.78f);
 
         }
         else
