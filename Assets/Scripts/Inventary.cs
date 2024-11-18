@@ -7,14 +7,14 @@ public class Inventary : MonoBehaviour
 
     private bool InventoryEnabled;
     public GameObject inventory;
-    private int allSlots;
+    public int allSlots;
     private int enabledSlots;
     public GameObject[] slots;
     public GameObject slotHolder;    
     public pauseGame _stopGame;
     public GameObject _pauseMove;
     public int collectiblesLayer;//Specifies in which layer the collectibles are
-    
+
     
 
 
@@ -105,7 +105,7 @@ public class Inventary : MonoBehaviour
 
                 slots[i].GetComponent<slot>().empty = false;
                 
-                return; //ojota con esto
+                return;
 
             }
             

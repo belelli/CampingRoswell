@@ -13,23 +13,13 @@ public class Item : MonoBehaviour
     public bool isLetter;
     public Sprite icon;
 
+
     [HideInInspector]
     public bool pickedUp;
 
     [HideInInspector]
     public bool equipped;
 
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.collider.tag == "Player")
-    //    {
-            
-    //        Destroy(gameObject);
-
-
-    //    }
-    //}
 
     private void Update()
     {
