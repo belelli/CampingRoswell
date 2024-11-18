@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   type: Collectible
-  description: Spider Skull
+  description: spider
   letterName: 
   isLetter: 0
   icon: {fileID: 21300000, guid: 1c3e10963657b404a9f2f18faaa7da24, type: 3}

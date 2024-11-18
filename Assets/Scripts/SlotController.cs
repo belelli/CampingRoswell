@@ -23,7 +23,7 @@ public class SlotController : MonoBehaviour
 
 
         string itemType = inventary.slots[slotId].GetComponent<slot>().type;
-        if (itemType == "letter")
+        if ((itemType == "letter") &&(!inventary.shrineInUse))
         {
             //Cuando se toca una carta, se activa el canvas
             canvas.gameObject.SetActive(true);
@@ -45,6 +45,10 @@ public class SlotController : MonoBehaviour
 
             //popula el campo Texto de Recall text
             recallTextObject.GetComponent<TextMeshProUGUI>().text = _textBuildUp;
+        } else if((itemType == "Collectible") && (inventary.shrineInUse))
+        {
+            print("click en COLLECTIBLE");
+
         }
         
 

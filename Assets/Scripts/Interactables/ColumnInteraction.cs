@@ -12,17 +12,31 @@ public class ColumnInteraction : MonoBehaviour
     [SerializeField] GameObject SpiderPrefab;
     [SerializeField] GameObject BeePrefab;
     [SerializeField] Transform SpawnPoint;
+    [SerializeField] GameObject[] objects;
+    [SerializeField] bool columnIsActive = false;
+    [SerializeField] Inventary inventary;
 
     private void Start()
     {
-        //slots = player.GetComponent<Inventary>().slots;
+        inventary = player.GetComponent<Inventary>();
         
     }
+    
 
     private void Update()
     {
-        print(slotHolder.transform.childCount);
-        
+        // if ((columnIsActive) && PlayerHitsE())
+        //{
+        //     ApplePrefab.SetActive(true);
+        // }
+        if (Input.GetKeyDown ( KeyCode.E) && columnIsActive)
+        {
+            print("EEEEH");
+            inventary.InventoryEnabled = !inventary.InventoryEnabled;
+            inventary.shrineInUse = !inventary.shrineInUse;
+
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +44,8 @@ public class ColumnInteraction : MonoBehaviour
         if (other.tag == "Player")
         {
             _arrowIndicator.SetActive(true);
+            columnIsActive = true;
+            
         }
         
     }
@@ -39,8 +55,16 @@ public class ColumnInteraction : MonoBehaviour
         if (other.tag == "Player")
         {
             _arrowIndicator.SetActive(false);
-            
+            columnIsActive = false;
+
+
         }
     }
+
+
+    //bool PlayerHitsE() 
+    //{
+    //    return(Input.GetKeyDown(KeyCode.E));
+    //}
 
 }

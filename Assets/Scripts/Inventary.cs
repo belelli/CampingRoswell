@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventary : MonoBehaviour
 {
 
-    private bool InventoryEnabled;
+    public bool InventoryEnabled;
     public GameObject inventory;
     public int allSlots;
     private int enabledSlots;
@@ -14,6 +14,7 @@ public class Inventary : MonoBehaviour
     public pauseGame _stopGame;
     public GameObject _pauseMove;
     public int collectiblesLayer;//Specifies in which layer the collectibles are
+    public bool shrineInUse = false;
 
     
 

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   type: Collectible
-  description: Blue Apple
+  description: apple
   letterName: 
   isLetter: 0
   icon: {fileID: 21300000, guid: f95b697c14436a848836ec8c78f44cea, type: 3}
