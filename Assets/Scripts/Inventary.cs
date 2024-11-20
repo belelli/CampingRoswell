@@ -146,6 +146,19 @@ public class Inventary : MonoBehaviour
 
     internal void removeItemfromInventory(int indexToRemove)
     {
-        slots[indexToRemove].gameObject.SetActive(false);
+
+
+        print("borrar el indice " + indexToRemove);
+        print("hay que borrar este "+slots[indexToRemove].GetComponent<slot>().description);
+        print("Se cambio?");
+        slots[indexToRemove].GetComponent<slot>().description = slots[indexToRemove + 1].GetComponent<slot>().description;
+        slots[indexToRemove].GetComponent<slot>().icon = slots[indexToRemove + 1].GetComponent<slot>().icon;
+        slots[indexToRemove].GetComponent<slot>().UpdateSlots();
+        //print(slots[indexToRemove].GetComponent<slot>().description);
+
+
+
+
     }
+
 }
