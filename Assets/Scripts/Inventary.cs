@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Inventary : MonoBehaviour
 {
@@ -15,6 +19,7 @@ public class Inventary : MonoBehaviour
     public GameObject _pauseMove;
     public int collectiblesLayer;//Specifies in which layer the collectibles are
     public bool shrineInUse = false;
+    public ColumnInteraction currentColumn;
 
     
 
@@ -44,8 +49,18 @@ public class Inventary : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I)) 
         {
             InventoryEnabled = !InventoryEnabled;
-        
+           
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            print("Shrine in use? "+shrineInUse);
+        }
+
+        if (!InventoryEnabled)
+        {
+            shrineInUse = false;
+        }
+
 
         if (InventoryEnabled) 
         {
@@ -105,13 +120,32 @@ public class Inventary : MonoBehaviour
                 slots[i].GetComponent<slot>().UpdateSlots();
 
                 slots[i].GetComponent<slot>().empty = false;
-                
                 return;
-
             }
-            
-
         }
-    
+    }
+
+    public void activateItem(string itemToActivate) 
+    {
+        switch (itemToActivate) 
+        {
+            case "apple" :
+                currentColumn.itemsInColumn[0].SetActive(true);
+                break;
+            case "bee":
+                currentColumn.itemsInColumn[1].SetActive(true);
+                break;
+
+            case "spider":
+                currentColumn.itemsInColumn[2].SetActive(true);
+                break;
+        }
+        InventoryEnabled = !InventoryEnabled;
+
+    }
+
+    internal void removeItemfromInventory(int indexToRemove)
+    {
+        slots[indexToRemove].gameObject.SetActive(false);
     }
 }
