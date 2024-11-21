@@ -169,7 +169,7 @@ public abstract class Enemy : MonoBehaviour
         }
 
             hp -= damage;
-        animator.SetBool("IsDamaging", true);
+        
         //StartCoroutine(GrowAndShrink());
 
         if (hp <= 0)
@@ -184,7 +184,7 @@ public abstract class Enemy : MonoBehaviour
         }
         else
         {
-
+            animator.SetBool("IsDamaging", true);
             currentState = EnemyState.Damage; // Cambiar a estado de daño
             Invoke("ReturnToChase", 0.5f); // Esperar para volver a Chase
         }
