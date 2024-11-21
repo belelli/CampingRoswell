@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class slot : MonoBehaviour
 {
-    public GameObject item;
+    public GameObject inGameObject;
+    public GameObject ColumnGameObject;
     public int ID;
     public string type;
     public string description;
@@ -13,6 +14,7 @@ public class slot : MonoBehaviour
     public Sprite icon;
     public string letterName;
     public Sprite defaultIcon;
+    public bool isPlaceble;
 
     public Transform slotIconGameObject;
 

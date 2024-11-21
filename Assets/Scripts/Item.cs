@@ -12,6 +12,9 @@ public class Item : MonoBehaviour
     public string letterName;
     public bool isLetter;
     public Sprite icon;
+    public GameObject inGameObject;
+    public GameObject columnGameObject;
+    public bool isPlaceble;
 
 
     [HideInInspector]
