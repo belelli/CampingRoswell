@@ -148,17 +148,44 @@ public class Inventary : MonoBehaviour
     {
 
 
-        print("borrar el indice " + indexToRemove);
-        print("hay que borrar este "+slots[indexToRemove].GetComponent<slot>().description);
-        print("Se cambio?");
-        slots[indexToRemove].GetComponent<slot>().description = slots[indexToRemove + 1].GetComponent<slot>().description;
-        slots[indexToRemove].GetComponent<slot>().icon = slots[indexToRemove + 1].GetComponent<slot>().icon;
-        slots[indexToRemove].GetComponent<slot>().UpdateSlots();
-        //print(slots[indexToRemove].GetComponent<slot>().description);
+        
+        //print("borrar el indice " + indexToRemove);
+        //print("hay que borrar este "+slots[indexToRemove].GetComponent<slot>().description);
+        //print("Se cambio?");
+        //slots[indexToRemove].GetComponent<slot>().description = slots[indexToRemove + 1].GetComponent<slot>().description;
+        //slots[indexToRemove].GetComponent<slot>().icon = slots[indexToRemove + 1].GetComponent<slot>().icon;
+        //slots[indexToRemove].GetComponent<slot>().UpdateSlots();
+
+        for (int i = indexToRemove; i <= 4; i++)//allSlots-1
+        {
+            slots[i].GetComponent<slot>().description = slots[i + 1].GetComponent<slot>().description;
+            slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
+            slots[i].GetComponent<slot>().ID = slots[i + 1].GetComponent<slot>().ID;
+            slots[i].GetComponent<slot>().empty = slots[i + 1].GetComponent<slot>().empty;
+
+
+            slots[i].GetComponent<slot>().UpdateSlots();
+
+            //if (slots[i + 1].GetComponent<slot>().icon != null)
+            //{
+            //    slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
+            //    slots[i].GetComponent<slot>().UpdateSlots();
+
+            //}
+            //else
+            //{
+
+            //}
+
+        }
+        //slots[allSlots - 1].GetComponent<slot>().description = "";
+        //slots[allSlots - 1].GetComponent<slot>().icon = null;
+        //slots[allSlots - 1].GetComponent<slot>().UpdateSlots();
 
 
 
 
     }
+    
 
 }
