@@ -25,4 +25,9 @@ public class MainMenu : MonoBehaviour
 
 
     }
+
+    public void Prototipo()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
