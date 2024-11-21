@@ -103,6 +103,9 @@ MonoBehaviour:
   letterName: 
   isLetter: 0
   icon: {fileID: 21300000, guid: f95b697c14436a848836ec8c78f44cea, type: 3}
+  inGameObject: {fileID: 1086950650809972721}
+  columnGameObject: {fileID: 1086950650809972721, guid: 17b7b7c401651a843aa874f9bab73922, type: 3}
+  isPlaceble: 0
   pickedUp: 0
   equipped: 0
 --- !u!1 &1923738621949467326

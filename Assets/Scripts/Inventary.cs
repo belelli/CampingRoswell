@@ -34,7 +34,7 @@ public class Inventary : MonoBehaviour
         {
             slots[i] = slotHolder.transform.GetChild(i).gameObject;
 
-            if (slots[i].GetComponent<slot>().item == null)
+            if (slots[i].GetComponent<slot>().inGameObject == null)
             {
                 slots[i].GetComponent<slot>().empty = true;
 
@@ -88,7 +88,7 @@ public class Inventary : MonoBehaviour
             GameObject itempickUp = other.gameObject;
             Item item = itempickUp.GetComponent<Item>();
 
-            AddItem(itempickUp,item.ID,item.type,item.description,item.icon, item.letterName);
+            AddItem(item.inGameObject, item.columnGameObject, item.ID,item.type,item.description,item.icon, item.letterName);
 
 
         }
@@ -97,29 +97,30 @@ public class Inventary : MonoBehaviour
 
 
 
-    public void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
+    public void AddItem(GameObject inGameObject, GameObject columnObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
     {
         for (int i = 0; i < allSlots; i++)
         {
+            slot thisSlot = slots[i].GetComponent<slot>();
             if (slots[i].GetComponent<slot>().empty)
             {
-                itemObject.GetComponent<Item>().pickedUp = true;
+                //inGameObject.GetComponent<Item>().pickedUp = true;
 
-                slots[i].GetComponent<slot>().item = itemObject;
-                slots[i].GetComponent<slot>().ID = itemID;
-                slots[i].GetComponent<slot>().type = itemType;
-                slots[i].GetComponent<slot>().description = itemDescription;
-                slots[i].GetComponent<slot>().icon = itemIcon;
+                thisSlot.inGameObject = inGameObject;
+                thisSlot.ColumnGameObject = columnObject;
+                thisSlot.ID = itemID;
+                thisSlot.type = itemType;
+                thisSlot.description = itemDescription;
+                thisSlot.icon = itemIcon;
+                thisSlot.letterName = letterName;
 
-                slots[i].GetComponent<slot>().letterName = letterName;
 
+                inGameObject.transform.parent = slots[i].transform;
+                inGameObject.SetActive(false);
 
-                itemObject.transform.parent = slots[i].transform;
-                itemObject.SetActive(false);
+                thisSlot.UpdateSlots();
 
-                slots[i].GetComponent<slot>().UpdateSlots();
-
-                slots[i].GetComponent<slot>().empty = false;
+                thisSlot.empty = false;
                 return;
             }
         }
@@ -127,20 +128,18 @@ public class Inventary : MonoBehaviour
 
     public void activateItem(string itemToActivate) 
     {
-        switch (itemToActivate) 
-        {
-            case "apple" :
-                currentColumn.itemsInColumn[0].SetActive(true);
-                break;
-            case "bee":
-                currentColumn.itemsInColumn[1].SetActive(true);
-                break;
 
-            case "spider":
-                currentColumn.itemsInColumn[2].SetActive(true);
-                break;
+        print("el item description es " + slots[0].GetComponent<slot>().description);
+        print("itemToActivate ES " + itemToActivate);
+
+
+        for (int i = 0; i < allSlots; i++)
+        {
+            if (slots[i].GetComponent<slot>().description == itemToActivate)
+            {
+                Instantiate(slots[i].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
+            }
         }
-        InventoryEnabled = !InventoryEnabled;
 
     }
 
@@ -148,23 +147,17 @@ public class Inventary : MonoBehaviour
     {
 
 
-        
-        //print("borrar el indice " + indexToRemove);
-        //print("hay que borrar este "+slots[indexToRemove].GetComponent<slot>().description);
-        //print("Se cambio?");
-        //slots[indexToRemove].GetComponent<slot>().description = slots[indexToRemove + 1].GetComponent<slot>().description;
-        //slots[indexToRemove].GetComponent<slot>().icon = slots[indexToRemove + 1].GetComponent<slot>().icon;
-        //slots[indexToRemove].GetComponent<slot>().UpdateSlots();
+
 
         for (int i = indexToRemove; i <= allSlots; i++)//allSlots-1
         {
-            slots[i].GetComponent<slot>().description = slots[i + 1].GetComponent<slot>().description;
-            slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
-            slots[i].GetComponent<slot>().ID = slots[i + 1].GetComponent<slot>().ID;
-            slots[i].GetComponent<slot>().empty = slots[i + 1].GetComponent<slot>().empty;
-            slots[i].GetComponent<slot>().item = slots[i + 1].GetComponent<slot>().item;
-            slots[i].GetComponent<slot>().UpdateSlots();
-
+            
+            //slots[i].GetComponent<slot>().description = slots[i + 1].GetComponent<slot>().description;
+            //slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
+            //slots[i].GetComponent<slot>().ID = slots[i + 1].GetComponent<slot>().ID;
+            //slots[i].GetComponent<slot>().empty = slots[i + 1].GetComponent<slot>().empty;
+            //slots[i].GetComponent<slot>().inGameObject = slots[i + 1].GetComponent<slot>().inGameObject;
+            //slots[i].GetComponent<slot>().UpdateSlots();
         }
 
 

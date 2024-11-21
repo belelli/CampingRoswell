@@ -8,14 +8,12 @@ public class ColumnInteraction : MonoBehaviour
     //[SerializeField] GameObject[] slots;
     [SerializeField] GameObject slotHolder;
     [SerializeField] PlayerMovement player;
-    [SerializeField] GameObject ApplePrefab;
-    [SerializeField] GameObject SpiderPrefab;
-    [SerializeField] GameObject BeePrefab;
-    [SerializeField] Transform SpawnPoint;
-    public GameObject[] itemsInColumn;
+
+    public Transform spawnPoint;
+
     [SerializeField] bool columnIsActive = false;
     [SerializeField] Inventary inventary;
-    [SerializeField] PlayerMovement playerMovement;
+    //[SerializeField] PlayerMovement playerMovement;
     [SerializeField] int ItemId;
 
     private void Start()
@@ -29,7 +27,6 @@ public class ColumnInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && columnIsActive)
         {
-            print("EEEEH");
             inventary.InventoryEnabled = !inventary.InventoryEnabled;
             inventary.shrineInUse = !inventary.shrineInUse;
         }
