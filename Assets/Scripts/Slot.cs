@@ -12,6 +12,7 @@ public class slot : MonoBehaviour
     public bool empty;
     public Sprite icon;
     public string letterName;
+    public Sprite defaultIcon;
 
     public Transform slotIconGameObject;
 
@@ -21,19 +22,17 @@ public class slot : MonoBehaviour
         slotIconGameObject = transform.GetChild(0);
         }
 
+ 
+
     public void UpdateSlots() 
     {
         slotIconGameObject.GetComponent<Image>().sprite = icon;
-
-
     }
 
     public void UseItem() 
     {
     
     }
-
-
 
    
 }
