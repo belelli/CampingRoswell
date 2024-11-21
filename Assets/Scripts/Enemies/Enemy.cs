@@ -171,7 +171,7 @@ public abstract class Enemy : MonoBehaviour
             currentState = EnemyState.Death;
             animator.SetTrigger("Death"); // Activar la animación de muertes
             Instantiate(deathEnemyPart, transform.position, Quaternion.identity);
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 0.8f);
             DropItem();
         }
         else
