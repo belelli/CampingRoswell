@@ -161,12 +161,20 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void takeDamage(int damage)
     {
-        hp -= damage;
+        if (currentState == EnemyState.Death) 
+        {
+            return;
+        
+        
+        }
+
+            hp -= damage;
         animator.SetBool("IsDamaging", true);
         //StartCoroutine(GrowAndShrink());
 
         if (hp <= 0)
         {
+
             Destroy(_rb);
             currentState = EnemyState.Death;
             animator.SetTrigger("Death"); // Activar la animación de muertes
