@@ -141,7 +141,6 @@ public class Inventary : MonoBehaviour
             }
         }
 
-        //Instantiate(slots[0].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
     }
 
     internal void removeItemfromInventory(int indexToRemove)
@@ -150,15 +149,16 @@ public class Inventary : MonoBehaviour
 
 
 
-        //for (int i = indexToRemove; i <= allSlots; i++)//allSlots-1
-        //{
-        //    slots[i].GetComponent<slot>().description = slots[i + 1].GetComponent<slot>().description;
-        //    slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
-        //    slots[i].GetComponent<slot>().ID = slots[i + 1].GetComponent<slot>().ID;
-        //    slots[i].GetComponent<slot>().empty = slots[i + 1].GetComponent<slot>().empty;
-        //    slots[i].GetComponent<slot>().inGameObject = slots[i + 1].GetComponent<slot>().inGameObject;
-        //    slots[i].GetComponent<slot>().UpdateSlots();
-        //}
+        for (int i = indexToRemove; i <= allSlots; i++)//allSlots-1
+        {
+            
+            //slots[i].GetComponent<slot>().description = slots[i + 1].GetComponent<slot>().description;
+            //slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
+            //slots[i].GetComponent<slot>().ID = slots[i + 1].GetComponent<slot>().ID;
+            //slots[i].GetComponent<slot>().empty = slots[i + 1].GetComponent<slot>().empty;
+            //slots[i].GetComponent<slot>().inGameObject = slots[i + 1].GetComponent<slot>().inGameObject;
+            //slots[i].GetComponent<slot>().UpdateSlots();
+        }
 
 
 
