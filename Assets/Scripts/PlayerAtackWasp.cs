@@ -45,7 +45,7 @@ public class PlayerAtackWasp : MonoBehaviour
         if (currentHealth <= 0)
         {
             sAnimator.SetTrigger("Death");
-            enemy.currentState = Enemy.EnemyState.Idle; //Carlos: entro al script y le digo que cambie a idle
+            //enemy.currentState = Enemy.EnemyState.Idle; //Carlos: entro al script y le digo que cambie a idle
             Debug.Log("IDLE");//debuggear que ande
             
             

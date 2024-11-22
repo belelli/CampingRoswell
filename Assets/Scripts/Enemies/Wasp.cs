@@ -38,7 +38,7 @@ public class Wasp : Enemy
             if (Time.time >= lastAttackTime + attackCooldown)
             {
                 AudioSource audioSource = GetComponent<AudioSource>();
-                SfxManager.instance.PlaySound(5, audioSource);
+                //SfxManager.instance.PlaySound(5, audioSource); esta línea estaba haciendo conflicto con el sonido
                 lastAttackTime = Time.time;
                 players.TakeDamage(damage);
                 animator.SetBool("IsAttacking", false);
