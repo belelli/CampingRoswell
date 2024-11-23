@@ -16,9 +16,15 @@ public class Shrine : MonoBehaviour
     {
         questHandler = player.GetComponent<QuestHandler>();
         quests = questHandler.quests;
-        
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.O)) 
+        {
+            print("Las columnas estan bien?: "+AllColumnsAreCorrect());
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -54,5 +60,22 @@ public class Shrine : MonoBehaviour
     {
         items.SetActive(true);
         shrineCanvas.SetActive(false);
+    }
+
+    private bool AllColumnsAreCorrect()
+    {
+        bool allGood = true;
+        foreach (ColumnInteraction col in columns) 
+        {
+            string itemInThisColumn = col.ItemInColumn();
+            if (!col.ColumnHasCorrectItem(itemInThisColumn))
+            {
+                allGood = false;
+                break;
+            }
+        }
+        
+        
+        return allGood;
     }
 }
