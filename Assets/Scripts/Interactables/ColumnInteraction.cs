@@ -16,6 +16,10 @@ public class ColumnInteraction : MonoBehaviour
     //[SerializeField] PlayerMovement playerMovement;
     [SerializeField] int ItemId;
 
+    public GameObject beeColumnObject;
+    public GameObject spiderColumnObject;
+    public GameObject appleColumnObject;
+
     private void Start()
     {
         inventary = player.GetComponent<Inventary>();

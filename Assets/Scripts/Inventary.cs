@@ -137,25 +137,28 @@ public class Inventary : MonoBehaviour
         }
     }
 
-    public void ActivateItem(string itemToActivate) 
+
+
+    public void ActivateItem(int itemPosition, string description)
     {
-
-        print("el item description es " + slots[0].GetComponent<slot>().description);
-        print("itemToActivate ES " + itemToActivate);
+        //Instantiate(slots[itemPosition].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
 
 
-        for (int i = 0; i < allSlots; i++)
+        switch (description)
         {
-            if (slots[i].GetComponent<slot>().description == itemToActivate)
-            {
-                Instantiate(slots[i].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
-            }
+            case "bee":
+                Instantiate(currentColumn.beeColumnObject, currentColumn.spawnPoint);
+                break;
+            case "spider":
+                Instantiate(currentColumn.spiderColumnObject, currentColumn.spawnPoint);
+                break;
+            case "apple":
+                Instantiate(currentColumn.appleColumnObject, currentColumn.spawnPoint);
+                break;
         }
-    }
 
-    public void NewActivateItem(int itemPosition)
-    {
-        Instantiate(slots[itemPosition].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
+
+        
         InventoryEnabled = false;
     }
 
