@@ -106,7 +106,7 @@ public class Inventary : MonoBehaviour
             slot thisSlot = slots[i].GetComponent<slot>();
             if (slots[i].GetComponent<slot>().empty)
             {
-                //inGameObject.GetComponent<Item>().pickedUp = true;
+                // inGameObject.GetComponent<Item>().pickedUp = true;
 
                 //GameObject tempGO = Instantiate(inGameObject);
                 //thisSlot.inGameObject = tempGO;
