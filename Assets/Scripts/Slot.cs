@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class slot : MonoBehaviour
 {
-    public GameObject itemPickUp;
+    public GameObject inGameObject;
     public GameObject ColumnGameObject;
     public int ID;
     public string type;

@@ -21,6 +21,7 @@ public class SlotController : MonoBehaviour
     public void clickSlot(int slotId)
     {
         print("Slock cliqueado :"+slotId);
+        print("El item cliqueado es de Typpe " + inventary.slots[slotId].GetComponent<slot>().type);
         string itemType = inventary.slots[slotId].GetComponent<slot>().type;
         string itemDescription = inventary.slots[slotId].GetComponent<slot>().description;
         

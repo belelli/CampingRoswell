@@ -34,7 +34,7 @@ public class Inventary : MonoBehaviour
         {
             slots[i] = slotHolder.transform.GetChild(i).gameObject; //a cada GameObject del array se le asigna un Slot (otro game object)
 
-            if (slots[i].GetComponent<slot>().itemPickUp == null)
+            if (slots[i].GetComponent<slot>().inGameObject == null)
             {
                 slots[i].GetComponent<slot>().empty = true;
             }
@@ -99,7 +99,7 @@ public class Inventary : MonoBehaviour
 
 
 
-    public void AddItem(GameObject itemPickUp, GameObject columnObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
+    public void AddItem(GameObject inGameObject, GameObject columnObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
     {
         for (int i = 0; i < allSlots; i++)
         {
@@ -108,13 +108,18 @@ public class Inventary : MonoBehaviour
             {
                 //inGameObject.GetComponent<Item>().pickedUp = true;
 
-                thisSlot.itemPickUp = itemPickUp;
+                //GameObject tempGO = Instantiate(inGameObject);
+                //thisSlot.inGameObject = tempGO;
+
+                
+                thisSlot.inGameObject = inGameObject;
                 thisSlot.ColumnGameObject = columnObject;
                 thisSlot.ID = itemID;
                 thisSlot.type = itemType;
                 thisSlot.description = itemDescription;
                 thisSlot.icon = itemIcon;
                 thisSlot.letterName = letterName;
+                
 
                
 
@@ -122,7 +127,7 @@ public class Inventary : MonoBehaviour
 
 
                 //inGameObject.transform.parent = slots[i].transform; 
-                itemPickUp.SetActive(false);
+                inGameObject.SetActive(false);
 
                 thisSlot.UpdateSlots();
 

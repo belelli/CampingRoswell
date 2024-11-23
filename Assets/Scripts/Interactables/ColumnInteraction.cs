@@ -36,7 +36,8 @@ public class ColumnInteraction : MonoBehaviour
             {
                 Item itemInColumn = spawnPoint.GetComponentInChildren<Item>();
                 print("Hay que guardar el item "+itemInColumn.description);
-                inventary.AddItem(itemInColumn.inGameObject, itemInColumn.columnGameObject, itemInColumn.ID,itemInColumn.description, itemInColumn.description, itemInColumn.icon, itemInColumn.letterName);
+                
+                inventary.AddItem(itemInColumn.inGameObject, itemInColumn.columnGameObject, itemInColumn.ID,itemInColumn.type, itemInColumn.description, itemInColumn.icon, itemInColumn.letterName);
                 Destroy(itemInColumn.gameObject);
             }
 
