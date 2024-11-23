@@ -57,7 +57,7 @@ public class SlotController : MonoBehaviour
     {
         print("click en COLLECTIBLE = " + itemDescription);
 
-        inventary.activateItem(itemDescription);
-        inventary.removeItemfromInventory(slotId);
+        //inventary.ActivateItem(itemDescription);
+        inventary.RemoveItem(slotId);
     }
 }

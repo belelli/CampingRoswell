@@ -28,17 +28,15 @@ public class Inventary : MonoBehaviour
     {
         
 
-        allSlots = slotHolder.transform.childCount;
-        slots = new GameObject[allSlots];
-        for (int i = 0; i < allSlots; i++)
+        allSlots = slotHolder.transform.childCount; //Cuenta cuantos Slots hay
+        slots = new GameObject[allSlots]; //Se declara un Array de GameObjects
+        for (int i = 0; i < allSlots; i++) //se itera sobre el array
         {
-            slots[i] = slotHolder.transform.GetChild(i).gameObject;
+            slots[i] = slotHolder.transform.GetChild(i).gameObject; //a cada GameObject del array se le asigna un Slot (otro game object)
 
             if (slots[i].GetComponent<slot>().inGameObject == null)
             {
                 slots[i].GetComponent<slot>().empty = true;
-
-
             }
         }
     }
@@ -115,7 +113,7 @@ public class Inventary : MonoBehaviour
                 thisSlot.letterName = letterName;
 
 
-                inGameObject.transform.parent = slots[i].transform;
+                //inGameObject.transform.parent = slots[i].transform; 
                 inGameObject.SetActive(false);
 
                 thisSlot.UpdateSlots();
@@ -126,7 +124,7 @@ public class Inventary : MonoBehaviour
         }
     }
 
-    public void activateItem(string itemToActivate) 
+    public void ActivateItem(string itemToActivate) 
     {
 
         print("el item description es " + slots[0].GetComponent<slot>().description);
@@ -143,27 +141,38 @@ public class Inventary : MonoBehaviour
 
     }
 
-    internal void removeItemfromInventory(int indexToRemove)
+    public void RemoveItem(int itemPosition)
     {
+        
+        
+        print("aca se borra el item " + itemPosition);
+        //slot thisSlot = slots[itemPosition].GetComponent<slot>();
+        //slot nextSlot = slots[itemPosition+1].GetComponent<slot>();
 
-
-
-
-        for (int i = indexToRemove; i <= allSlots; i++)//allSlots-1
+        for (int i = itemPosition; i < allSlots; i++)
         {
-            
-            //slots[i].GetComponent<slot>().description = slots[i + 1].GetComponent<slot>().description;
-            //slots[i].GetComponent<slot>().icon = slots[i + 1].GetComponent<slot>().icon;
-            //slots[i].GetComponent<slot>().ID = slots[i + 1].GetComponent<slot>().ID;
-            //slots[i].GetComponent<slot>().empty = slots[i + 1].GetComponent<slot>().empty;
-            //slots[i].GetComponent<slot>().inGameObject = slots[i + 1].GetComponent<slot>().inGameObject;
-            //slots[i].GetComponent<slot>().UpdateSlots();
+            slot thisSlot = slots[i].GetComponent<slot>();
+            slot nextSlot = slots[i + 1].GetComponent<slot>();
+
+            thisSlot.inGameObject = nextSlot.inGameObject;
+            thisSlot.ColumnGameObject = nextSlot.ColumnGameObject;
+            thisSlot.ID = nextSlot.ID;
+            thisSlot.type = nextSlot.type;
+            thisSlot.description = nextSlot.description;
+            thisSlot.icon = nextSlot.icon;
+            thisSlot.letterName = nextSlot.letterName;
+            print("PERO ahora tiene: " + thisSlot.description);
+            thisSlot.UpdateSlots();
         }
 
 
 
 
     }
+
+
+
+
     
 
 }
