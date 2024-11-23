@@ -14,11 +14,14 @@ public class ColumnInteraction : MonoBehaviour
     [SerializeField] bool columnIsActive = false;
     [SerializeField] Inventary inventary;
     //[SerializeField] PlayerMovement playerMovement;
-    [SerializeField] int ItemId;
+    
 
     public GameObject beeColumnObject;
     public GameObject spiderColumnObject;
     public GameObject appleColumnObject;
+    public int ItemId;
+    public string correctItemToPlacehere;
+    
 
     private void Start()
     {
@@ -78,15 +81,24 @@ public class ColumnInteraction : MonoBehaviour
         print("Columna llena? "+ColumnHasItem());
         if (ColumnHasItem())
         {
-            print("la columna tiene un " + spawnPoint.GetComponentInChildren<Item>().description);
+            //print("la columna tiene un " + spawnPoint.GetComponentInChildren<Item>().description);
+            print("en ESTA columna hay un " + ItemInColumn());
         }
     }
 
-    public bool ColumnHasItem()
+    public bool ColumnHasItem() //Te dice si la columna esta ocupada o no
     {
-        
         return (spawnPoint.GetComponentInChildren<Item>() != null);
+    }
 
+    public string ItemInColumn()
+    {
+        return (spawnPoint.GetComponentInChildren<Item>().description);
+    }
+
+    public bool ColumnHasCorrectItem(int columnId, string correctItemDescription)
+    {
+        return true;
     }
 
 
