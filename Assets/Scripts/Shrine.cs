@@ -10,9 +10,8 @@ public class Shrine : MonoBehaviour
     QuestHandler questHandler;
     [SerializeField] Quest[] quests;
     [SerializeField] public PlayerMovement player;
-    //[SerializeField] bool _allQuestsCompleted = false;
+    public List<ColumnInteraction> columns = new List<ColumnInteraction>();
 
-    // Start is called before the first frame update
     void Start()
     {
         questHandler = player.GetComponent<QuestHandler>();
