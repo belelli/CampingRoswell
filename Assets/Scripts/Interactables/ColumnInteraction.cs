@@ -20,7 +20,7 @@ public class ColumnInteraction : MonoBehaviour
     public GameObject spiderColumnObject;
     public GameObject appleColumnObject;
     public int ItemId;
-    public string correctItemToPlacehere;
+    public string correctItemToPlaceInColumn;
     
 
     private void Start()
@@ -83,6 +83,9 @@ public class ColumnInteraction : MonoBehaviour
         {
             //print("la columna tiene un " + spawnPoint.GetComponentInChildren<Item>().description);
             print("en ESTA columna hay un " + ItemInColumn());
+            print("el aca deberia haber un " + correctItemToPlaceInColumn);
+            print("es el correcto? " + ColumnHasCorrectItem(ItemInColumn()));
+            
         }
     }
 
@@ -96,9 +99,9 @@ public class ColumnInteraction : MonoBehaviour
         return (spawnPoint.GetComponentInChildren<Item>().description);
     }
 
-    public bool ColumnHasCorrectItem(int columnId, string correctItemDescription)
+    public bool ColumnHasCorrectItem(string itemInColumn)
     {
-        return true;
+        return (itemInColumn == correctItemToPlaceInColumn);
     }
 
 
