@@ -27,8 +27,19 @@ public class ColumnInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && columnIsActive)
         {
-            inventary.InventoryEnabled = !inventary.InventoryEnabled;
-            inventary.shrineInUse = !inventary.shrineInUse;
+            if (!ColumnHasItem())
+            {
+                inventary.InventoryEnabled = !inventary.InventoryEnabled;
+                inventary.shrineInUse = !inventary.shrineInUse;
+            }
+            else
+            {
+                Item itemInColumn = spawnPoint.GetComponentInChildren<Item>();
+                print("Hay que guardar el item "+itemInColumn.description);
+                inventary.AddItem(itemInColumn.inGameObject, itemInColumn.columnGameObject, itemInColumn.ID,itemInColumn.description, itemInColumn.description, itemInColumn.icon, itemInColumn.letterName);
+                Destroy(itemInColumn.gameObject);
+            }
+
         }
 
     }
@@ -54,8 +65,19 @@ public class ColumnInteraction : MonoBehaviour
             _arrowIndicator.SetActive(false);
             columnIsActive = false;
         }
+        print("Columna llena? "+ColumnHasItem());
+        if (ColumnHasItem())
+        {
+            print("la columna tiene un " + spawnPoint.GetComponentInChildren<Item>().description);
+        }
     }
 
+    public bool ColumnHasItem()
+    {
+        
+        return (spawnPoint.GetComponentInChildren<Item>() != null);
+
+    }
 
 
 

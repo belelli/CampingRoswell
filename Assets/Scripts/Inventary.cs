@@ -34,7 +34,7 @@ public class Inventary : MonoBehaviour
         {
             slots[i] = slotHolder.transform.GetChild(i).gameObject; //a cada GameObject del array se le asigna un Slot (otro game object)
 
-            if (slots[i].GetComponent<slot>().inGameObject == null)
+            if (slots[i].GetComponent<slot>().itemPickUp == null)
             {
                 slots[i].GetComponent<slot>().empty = true;
             }
@@ -84,18 +84,22 @@ public class Inventary : MonoBehaviour
         if (other.GetComponent<Item>() != null)
         {
             GameObject itempickUp = other.gameObject;
+            print("HAsta aca "+itempickUp.name);
             Item item = itempickUp.GetComponent<Item>();
+            
+            print("inGameObject is "+item.inGameObject.name);
+            print("columnObject is " + item.columnGameObject.name);
 
             AddItem(item.inGameObject, item.columnGameObject, item.ID,item.type,item.description,item.icon, item.letterName);
 
-
+            print("es de inventory");
         }
     }
 
 
 
 
-    public void AddItem(GameObject inGameObject, GameObject columnObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
+    public void AddItem(GameObject itemPickUp, GameObject columnObject, int itemID, string itemType, string itemDescription, Sprite itemIcon, string letterName)
     {
         for (int i = 0; i < allSlots; i++)
         {
@@ -104,7 +108,7 @@ public class Inventary : MonoBehaviour
             {
                 //inGameObject.GetComponent<Item>().pickedUp = true;
 
-                thisSlot.inGameObject = inGameObject;
+                thisSlot.itemPickUp = itemPickUp;
                 thisSlot.ColumnGameObject = columnObject;
                 thisSlot.ID = itemID;
                 thisSlot.type = itemType;
@@ -112,9 +116,13 @@ public class Inventary : MonoBehaviour
                 thisSlot.icon = itemIcon;
                 thisSlot.letterName = letterName;
 
+               
+
+                
+
 
                 //inGameObject.transform.parent = slots[i].transform; 
-                inGameObject.SetActive(false);
+                itemPickUp.SetActive(false);
 
                 thisSlot.UpdateSlots();
 
@@ -138,7 +146,12 @@ public class Inventary : MonoBehaviour
                 Instantiate(slots[i].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
             }
         }
+    }
 
+    public void NewActivateItem(int itemPosition)
+    {
+        Instantiate(slots[itemPosition].GetComponent<slot>().ColumnGameObject, currentColumn.spawnPoint);
+        InventoryEnabled = false;
     }
 
     public void RemoveItem(int itemPosition)
@@ -149,21 +162,24 @@ public class Inventary : MonoBehaviour
         //slot thisSlot = slots[itemPosition].GetComponent<slot>();
         //slot nextSlot = slots[itemPosition+1].GetComponent<slot>();
 
+        
         for (int i = itemPosition; i < allSlots; i++)
         {
             slot thisSlot = slots[i].GetComponent<slot>();
             slot nextSlot = slots[i + 1].GetComponent<slot>();
 
-            thisSlot.inGameObject = nextSlot.inGameObject;
+            //thisSlot.inGameObject = nextSlot.inGameObject;
             thisSlot.ColumnGameObject = nextSlot.ColumnGameObject;
             thisSlot.ID = nextSlot.ID;
             thisSlot.type = nextSlot.type;
             thisSlot.description = nextSlot.description;
             thisSlot.icon = nextSlot.icon;
             thisSlot.letterName = nextSlot.letterName;
-            print("PERO ahora tiene: " + thisSlot.description);
+            thisSlot.empty = nextSlot.empty;
+            //print("PERO ahora tiene: " + thisSlot.description);
             thisSlot.UpdateSlots();
         }
+   
 
 
 

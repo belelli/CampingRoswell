@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     public Sprite icon;
     public GameObject inGameObject;
     public GameObject columnGameObject;
+    
     public bool isPlaceble;
 
 

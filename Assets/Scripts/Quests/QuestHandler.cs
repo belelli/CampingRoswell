@@ -49,9 +49,9 @@ public class QuestHandler : MonoBehaviour
 
             GameObject itempickUp = collision.rigidbody.gameObject;
             Item item = itempickUp.GetComponent<Item>();
-           
-            
-            inventary.AddItem(item.inGameObject, item.columnGameObject, item.ID, item.type, item.description, item.icon, item.letterName);
+
+            print("es de questHandler");
+            inventary.AddItem(itempickUp, item.columnGameObject, item.ID, item.type, item.description, item.icon, item.letterName);
             Destroy(collision.gameObject);
 
 
