@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shrine : MonoBehaviour
 {
-    
     [SerializeField] GameObject shrineCanvas;
     [SerializeField] GameObject items;
     QuestHandler questHandler;
@@ -64,18 +63,20 @@ public class Shrine : MonoBehaviour
 
     private bool AllColumnsAreCorrect()
     {
-        bool allGood = true;
         foreach (ColumnInteraction col in columns) 
         {
+            //print("****************");
+            //print("COLUMNA "+col.ItemId);
+            //print("el item POSTA para esta columna seria un " + col.correctItemToPlaceInColumn);
+            //print("en esta col hay un " + col.ItemInColumn());
+            //print("****************");
+
             string itemInThisColumn = col.ItemInColumn();
             if (!col.ColumnHasCorrectItem(itemInThisColumn))
             {
-                allGood = false;
-                break;
+                return false;
             }
         }
-        
-        
-        return allGood;
+        return true;
     }
 }
