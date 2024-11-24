@@ -21,6 +21,7 @@ public class Inventary : MonoBehaviour
     public bool shrineInUse = false;
     public ColumnInteraction currentColumn;
 
+
     
 
 

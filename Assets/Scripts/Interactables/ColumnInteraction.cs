@@ -22,12 +22,14 @@ public class ColumnInteraction : MonoBehaviour
     public int ItemId;
     public string correctItemToPlaceInColumn;
     
+    
 
     private void Start()
     {
         inventary = player.GetComponent<Inventary>();
-        
     }
+
+
     
 
     private void Update()
@@ -42,9 +44,6 @@ public class ColumnInteraction : MonoBehaviour
             else
             {
                 Item itemInColumn = spawnPoint.GetComponentInChildren<Item>();
-                print("Hay que guardar el item "+itemInColumn.description);
-
-
                 GameObject objectReference = itemInColumn.gameObject;
                 Destroy(itemInColumn.gameObject);
 
@@ -78,15 +77,6 @@ public class ColumnInteraction : MonoBehaviour
             _arrowIndicator.SetActive(false);
             columnIsActive = false;
         }
-        print("Columna llena? "+ColumnHasItem());
-        if (ColumnHasItem())
-        {
-            //print("la columna tiene un " + spawnPoint.GetComponentInChildren<Item>().description);
-            print("en ESTA columna hay un " + ItemInColumn());
-            print("el aca deberia haber un " + correctItemToPlaceInColumn);
-            print("es el correcto? " + ColumnHasCorrectItem(ItemInColumn()));
-            
-        }
     }
 
     public bool ColumnHasItem() //Te dice si la columna esta ocupada o no
@@ -94,12 +84,12 @@ public class ColumnInteraction : MonoBehaviour
         return (spawnPoint.GetComponentInChildren<Item>() != null);
     }
 
-    public string ItemInColumn()
+    public string ItemInColumn() //Te devuelve un string con la description del item que esta en la columna
     {
         return (spawnPoint.GetComponentInChildren<Item>().description);
     }
 
-    public bool ColumnHasCorrectItem(string itemInColumn)
+    public bool ColumnHasCorrectItem(string itemInColumn) //Te dice si la columna tiene el item indicado 
     {
         return (itemInColumn == correctItemToPlaceInColumn);
     }

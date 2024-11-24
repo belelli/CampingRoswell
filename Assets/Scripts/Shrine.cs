@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Shrine : MonoBehaviour
 {
-    [SerializeField] GameObject shrineCanvas;
-    [SerializeField] GameObject items;
-    QuestHandler questHandler;
-    [SerializeField] Quest[] quests;
+    //[SerializeField] GameObject shrineCanvas; //DISENIO VIEJO DE SHRINE
+    [SerializeField] GameObject itemsToActivate;
+    //QuestHandler questHandler; //DISENIO VIEJO DE SHRINE
+    //[SerializeField] Quest[] quests; //DISENIO VIEJO DE SHRINE
     [SerializeField] public PlayerMovement player;
     public List<ColumnInteraction> columns = new List<ColumnInteraction>();
 
     void Start()
     {
-        questHandler = player.GetComponent<QuestHandler>();
-        quests = questHandler.quests;
+        //questHandler = player.GetComponent<QuestHandler>(); //DISENIO VIEJO DE SHRINE
+        //quests = questHandler.quests; //DISENIO VIEJO DE SHRINE
     }
 
     private void Update()
@@ -23,43 +23,60 @@ public class Shrine : MonoBehaviour
         {
             print("Las columnas estan bien?: "+AllColumnsAreCorrect());
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        
-        if (other.tag == "Player")
+        if (Input.GetKeyUp(KeyCode.U))
         {
-           
-            if ((!items.activeSelf) && AllQuestsAreCompleted())
-            {
-                shrineCanvas.SetActive(true);
-            }
-            
+            print("todas tienen algo?: " + AllColumsHaveItems());
         }
 
-    }
-
-    public bool AllQuestsAreCompleted()
-    {
-        var completed = true;
-        for (int i = 0; i < quests.Length; i++)
+        if (AllColumsHaveItems()) 
         {
-            if (!quests[i].isDone)
+            if (AllColumnsAreCorrect())
             {
-                completed = false;
+                print("TODO JOSHA");
+                itemsToActivate.SetActive(true);
             }
         }
-        return completed;
     }
-    
-    
-    public void YesButton()
-    {
-        items.SetActive(true);
-        shrineCanvas.SetActive(false);
-    }
+
+    //DISENIO VIEJO DE SHRINE
+    //private void OnTriggerEnter(Collider other)
+    //{
+
+
+    //    if (other.tag == "Player")
+    //    {
+
+    //        if ((!items.activeSelf) && AllQuestsAreCompleted())
+    //        {
+    //            shrineCanvas.SetActive(true);
+    //        }
+
+    //    }
+
+    //}
+
+
+    //DISENIO VIEJO DE SHRINE
+    //public bool AllQuestsAreCompleted()
+    //{
+    //    var completed = true;
+    //    for (int i = 0; i < quests.Length; i++)
+    //    {
+    //        if (!quests[i].isDone)
+    //        {
+    //            completed = false;
+    //        }
+    //    }
+    //    return completed;
+    //}
+
+
+    //DISENIO VIEJO DE SHRINE
+    //public void YesButton()
+    //{
+    //    items.SetActive(true);
+    //    shrineCanvas.SetActive(false);
+    //}
 
     private bool AllColumnsAreCorrect()
     {
@@ -77,6 +94,19 @@ public class Shrine : MonoBehaviour
                 return false;
             }
         }
+        return true;
+    }
+
+    private bool AllColumsHaveItems()
+    {
+        foreach (ColumnInteraction column in columns)
+        {
+            if (!column.ColumnHasItem())
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 }
